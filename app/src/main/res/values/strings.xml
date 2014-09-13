@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General app strings -->
+    <string name="app_name">Conjugation</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- For activities and fragments -->
+    <string name="present_form_activity">Present Tense Conjugation</string>
+
+    <!-- Conjugation labels -->
+    <string name="yo">Yo form: </string>
+    <string name="tu">Tú form: </string>
+    <string name="el">El/ella/usted form: </string>
+    <string name="nos">Nosotros form: </string>
+    <string name="os">Vosotros form: </string>
+    <string name="ellos">Ellos/ellas/ustedes form: </string>
+
+
+</resources>
