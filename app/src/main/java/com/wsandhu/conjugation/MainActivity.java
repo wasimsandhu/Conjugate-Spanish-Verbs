@@ -3,6 +3,7 @@ package com.wsandhu.conjugation;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,9 +15,6 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    String infinitive;
-    String conjugationYo, conjugationTu, conjugationEl, conjugationNos, conjugationOs, conjugationEllos;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,45 +24,6 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-
-        Button mConjugateButton = (Button) findViewById(R.id.conjugateButton);
-        mConjugateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Conjugate();
-            }
-        });
-    }
-
-    protected void Conjugate() {
-
-        // Grabs input from text field and places it in String infinitive
-        EditText mMainTextField = (EditText) findViewById(R.id.mainTextField);
-        infinitive = mMainTextField.getText().toString();
-
-        // replaces the ending in the -ar infinitive with present tense ending
-        conjugationYo = infinitive.replace("ar", "o");
-        conjugationTu = infinitive.replace("ar", "as");
-        conjugationEl = infinitive.replace("ar", "a");
-        conjugationNos = infinitive.replace("ar", "amos");
-        conjugationOs = infinitive.replace("ar", "aís");
-        conjugationEllos = infinitive.replace("ar", "an");
-
-        // Casting the XML text views into Java objects...
-        TextView mYoTextView = (TextView) findViewById(R.id.yoTextView);
-        TextView mTuTextView = (TextView) findViewById(R.id.tuTextView);
-        TextView mElTextView = (TextView) findViewById(R.id.elTextView);
-        TextView mNosTextView = (TextView) findViewById(R.id.nosTextView);
-        TextView mOsTextView = (TextView) findViewById(R.id.osTextView);
-        TextView mEllosTextView = (TextView) findViewById(R.id.ellosTextView);
-
-        // Sets the text of these placeholder text views to the conjugation :)
-        mYoTextView.setText(conjugationYo);
-        mTuTextView.setText(conjugationTu);
-        mElTextView.setText(conjugationEl);
-        mNosTextView.setText(conjugationNos);
-        mOsTextView.setText(conjugationOs);
-        mEllosTextView.setText(conjugationEllos);
     }
 
     @Override
@@ -91,13 +50,109 @@ public class MainActivity extends Activity {
      */
     public static class PlaceholderFragment extends Fragment {
 
+        String infinitive;
+        String conjugationYo, conjugationTu, conjugationEl, conjugationNos, conjugationOs, conjugationEllos;
+
         public PlaceholderFragment() {
+
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            // Casting the XML text views into Java objects...
+            final TextView mYoTextView = (TextView) rootView.findViewById(R.id.yoTextView);
+            final TextView mTuTextView = (TextView) rootView.findViewById(R.id.tuTextView);
+            final TextView mElTextView = (TextView) rootView.findViewById(R.id.elTextView);
+            final TextView mNosTextView = (TextView) rootView.findViewById(R.id.nosTextView);
+            final TextView mOsTextView = (TextView) rootView.findViewById(R.id.osTextView);
+            final TextView mEllosTextView = (TextView) rootView.findViewById(R.id.ellosTextView);
+
+            // Grabs input from text field and places it in String infinitive
+            final EditText mMainTextField = (EditText) rootView.findViewById(R.id.mainTextField);
+            infinitive = mMainTextField.getText().toString();
+
+            Button mConjugateButton = (Button) rootView.findViewById(R.id.conjugateButton);
+            mConjugateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Check to see what kind of verb it is before conjugating
+                    // TODO Fix this!
+                    if (infinitive.contains("ar")) {
+                        conjugateArVerb();
+                    } else if (infinitive.contains("er")) {
+                        conjugateErVerb();
+                    } else if (infinitive.contains("ir")) {
+                        conjugateIrVerb();
+                    } else {
+                        Log.e("onClick", "Error, could not conjugate!");
+                    }
+                }
+
+                protected void conjugateArVerb() {
+
+                    // replaces the ending in the -ar infinitive with present tense ending
+                    conjugationYo = infinitive.replace("ar", "o");
+                    conjugationTu = infinitive.replace("ar", "as");
+                    conjugationEl = infinitive.replace("ar", "a");
+                    conjugationNos = infinitive.replace("ar", "amos");
+                    conjugationOs = infinitive.replace("ar", "aís");
+                    conjugationEllos = infinitive.replace("ar", "an");
+
+                    // Sets the text of these placeholder text views to the conjugation :)
+                    mYoTextView.setText(conjugationYo);
+                    mTuTextView.setText(conjugationTu);
+                    mElTextView.setText(conjugationEl);
+                    mNosTextView.setText(conjugationNos);
+                    mOsTextView.setText(conjugationOs);
+                    mEllosTextView.setText(conjugationEllos);
+
+                }
+
+                protected void conjugateErVerb() {
+
+                    // replaces the -er ending in the infinitive with present tense ending
+                    conjugationYo = infinitive.replace("er", "o");
+                    conjugationTu = infinitive.replace("er", "es");
+                    conjugationEl = infinitive.replace("er", "e");
+                    conjugationNos = infinitive.replace("er", "emos");
+                    conjugationOs = infinitive.replace("er", "eís");
+                    conjugationEllos = infinitive.replace("er", "en");
+
+                    // Sets the text of these placeholder text views to the conjugation :)
+                    mYoTextView.setText(conjugationYo);
+                    mTuTextView.setText(conjugationTu);
+                    mElTextView.setText(conjugationEl);
+                    mNosTextView.setText(conjugationNos);
+                    mOsTextView.setText(conjugationOs);
+                    mEllosTextView.setText(conjugationEllos);
+
+                }
+
+                protected void conjugateIrVerb() {
+
+                    // replaces the -ir ending in the infinitive with present tense ending
+                    conjugationYo = infinitive.replace("ir", "o");
+                    conjugationTu = infinitive.replace("ir", "es");
+                    conjugationEl = infinitive.replace("ir", "e");
+                    conjugationNos = infinitive.replace("ir", "imos");
+                    conjugationOs = infinitive.replace("ir", "ís");
+                    conjugationEllos = infinitive.replace("ir", "en");
+
+                    // Sets the text of these placeholder text views to the conjugation :)
+                    mYoTextView.setText(conjugationYo);
+                    mTuTextView.setText(conjugationTu);
+                    mElTextView.setText(conjugationEl);
+                    mNosTextView.setText(conjugationNos);
+                    mOsTextView.setText(conjugationOs);
+                    mEllosTextView.setText(conjugationEllos);
+
+                }
+
+            });
+
             return rootView;
         }
     }
