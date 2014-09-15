@@ -3,7 +3,6 @@ package com.wsandhu.conjugation;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -72,22 +72,28 @@ public class MainActivity extends Activity {
 
             // Grabs input from text field and places it in String infinitive
             final EditText mMainTextField = (EditText) rootView.findViewById(R.id.mainTextField);
-            infinitive = mMainTextField.getText().toString();
 
-            Button mConjugateButton = (Button) rootView.findViewById(R.id.conjugateButton);
+            final Button mConjugateButton = (Button) rootView.findViewById(R.id.conjugateButton);
             mConjugateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    infinitive = mMainTextField.getText().toString();
+
+                    boolean isEndingAr = infinitive.endsWith("ar");
+                    boolean isEndingEr = infinitive.endsWith("er");
+                    boolean isEndingIr = infinitive.endsWith("ir");
+
                     // Check to see what kind of verb it is before conjugating
-                    // TODO Fix this!
-                    if (infinitive.contains("ar")) {
+                    if (isEndingAr) {
                         conjugateArVerb();
-                    } else if (infinitive.contains("er")) {
+                    } else if (isEndingEr) {
                         conjugateErVerb();
-                    } else if (infinitive.contains("ir")) {
+                    } else if (isEndingIr) {
                         conjugateIrVerb();
                     } else {
-                        Log.e("onClick", "Error, could not conjugate!");
+                        Toast toast = Toast.makeText(getActivity(), "Could not conjugate the verb: " + infinitive, Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                 }
 

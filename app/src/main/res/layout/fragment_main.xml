@@ -32,6 +32,7 @@
         android:textSize="20dp"
         android:layout_below="@+id/mainTextField"
         android:layout_toRightOf="@+id/yoLabelTextView"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="15dp"/>
 
     <TextView
@@ -51,6 +52,7 @@
         android:textSize="20dp"
         android:layout_below="@+id/yoLabelTextView"
         android:layout_toRightOf="@+id/tuLabelTextView"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="15dp"/>
 
     <TextView
@@ -70,6 +72,7 @@
         android:textSize="20dp"
         android:layout_below="@+id/tuLabelTextView"
         android:layout_toRightOf="@+id/elLabelTextView"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="15dp"/>
 
     <TextView
@@ -89,6 +92,7 @@
         android:textSize="20dp"
         android:layout_below="@+id/elLabelTextView"
         android:layout_toRightOf="@+id/nosLabelTextView"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="15dp"/>
 
     <TextView
@@ -108,6 +112,7 @@
         android:textSize="20dp"
         android:layout_below="@+id/nosLabelTextView"
         android:layout_toRightOf="@+id/osLabelTextView"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="15dp"/>
 
     <TextView
@@ -127,6 +132,7 @@
         android:textSize="20dp"
         android:layout_below="@+id/osLabelTextView"
         android:layout_toRightOf="@+id/ellosLabelTextView"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="15dp"/>
 
     <Button
@@ -134,8 +140,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Conjugate!"
-        android:layout_marginBottom="70dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/ellosLabelTextView"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
