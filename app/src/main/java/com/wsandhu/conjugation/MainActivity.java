@@ -8,8 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +51,7 @@ public class MainActivity extends Activity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
         String infinitive;
         String conjugationYo, conjugationTu, conjugationEl, conjugationNos, conjugationOs, conjugationEllos;
@@ -69,6 +72,15 @@ public class MainActivity extends Activity {
             final TextView mNosTextView = (TextView) rootView.findViewById(R.id.nosTextView);
             final TextView mOsTextView = (TextView) rootView.findViewById(R.id.osTextView);
             final TextView mEllosTextView = (TextView) rootView.findViewById(R.id.ellosTextView);
+
+            // Spinner for picking how to conjugate the verb
+            Spinner mConjugationTypeSpinner = (Spinner) rootView.findViewById(R.id.conjugationTypeSpinner);
+
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                    R.array.conjugation_types, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            mConjugationTypeSpinner.setAdapter(adapter);
+            mConjugationTypeSpinner.setOnItemSelectedListener(this);
 
             // Grabs input from text field and places it in String infinitive
             final EditText mMainTextField = (EditText) rootView.findViewById(R.id.mainTextField);
@@ -160,6 +172,17 @@ public class MainActivity extends Activity {
             });
 
             return rootView;
+        }
+
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            // An item was selected. You can retrieve the selected item using
+            // parent.getItemAtPosition(pos)
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
+
         }
     }
 }

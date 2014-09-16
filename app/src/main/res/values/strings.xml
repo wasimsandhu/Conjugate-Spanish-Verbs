@@ -17,5 +17,13 @@
     <string name="os">Vosotros form: </string>
     <string name="ellos">Ellos/ellas/ustedes form: </string>
 
+    <string-array name="conjugation_types">
+        <item>Present</item>
+        <item>Preterite</item>
+        <item>Imperfect</item>
+        <item>Future</item>
+        <item>Imperative</item>
+        <item>Subjunctive</item>
+    </string-array>
 
 </resources>

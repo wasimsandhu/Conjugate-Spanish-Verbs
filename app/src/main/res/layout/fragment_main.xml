@@ -28,7 +28,7 @@
         android:id="@+id/yoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" ..."
+        android:text=" "
         android:textSize="20dp"
         android:layout_below="@+id/mainTextField"
         android:layout_toRightOf="@+id/yoLabelTextView"
@@ -48,7 +48,7 @@
         android:id="@+id/tuTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" ..."
+        android:text=" "
         android:textSize="20dp"
         android:layout_below="@+id/yoLabelTextView"
         android:layout_toRightOf="@+id/tuLabelTextView"
@@ -68,7 +68,7 @@
         android:id="@+id/elTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" ..."
+        android:text=" "
         android:textSize="20dp"
         android:layout_below="@+id/tuLabelTextView"
         android:layout_toRightOf="@+id/elLabelTextView"
@@ -88,7 +88,7 @@
         android:id="@+id/nosTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" ..."
+        android:text=" "
         android:textSize="20dp"
         android:layout_below="@+id/elLabelTextView"
         android:layout_toRightOf="@+id/nosLabelTextView"
@@ -108,7 +108,7 @@
         android:id="@+id/osTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" ..."
+        android:text=" "
         android:textSize="20dp"
         android:layout_below="@+id/nosLabelTextView"
         android:layout_toRightOf="@+id/osLabelTextView"
@@ -128,20 +128,27 @@
         android:id="@+id/ellosTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" ..."
+        android:text=" "
         android:textSize="20dp"
         android:layout_below="@+id/osLabelTextView"
         android:layout_toRightOf="@+id/ellosLabelTextView"
         android:layout_marginLeft="2dp"
         android:layout_marginTop="15dp"/>
 
+    <Spinner
+        android:id="@+id/conjugationTypeSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/ellosLabelTextView" />
+
     <Button
         android:id="@+id/conjugateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Conjugate!"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/ellosLabelTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/conjugationTypeSpinner" />
 
 </RelativeLayout>
