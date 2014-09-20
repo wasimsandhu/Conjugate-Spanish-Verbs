@@ -68,12 +68,12 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                 boolean isIrregularVerb = Arrays.asList(irregularVerbs).contains(infinitive);
 
                 // Check to see what kind of verb it is before conjugating
-                if (isEndingAr) {
-                    conjugateArVerb();
-                } else if (isEndingEr) {
-                    conjugateErVerb();
+                if (isEndingAr && !isIrregularVerb) {
+                    conjugateArVerbPresent();
+                } else if (isEndingEr && !isIrregularVerb) {
+                    conjugateErVerbPresent();
                 } else if (isEndingIr && !isIrregularVerb) {
-                    conjugateIrVerb();
+                    conjugateIrVerbPresent();
                 } else if (isIrregularVerb) {
                     conjugateIrregularVerb();
                 } else {
@@ -82,7 +82,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                 }
             }
 
-            protected void conjugateArVerb() {
+            protected void conjugateArVerbPresent() {
 
                 // replaces the ending in the -ar infinitive with present tense ending
                 conjugationYo = infinitive.replace("ar", "o");
@@ -96,7 +96,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
             }
 
-            protected void conjugateErVerb() {
+            protected void conjugateErVerbPresent() {
 
                 // replaces the -er ending in the infinitive with present tense ending
                 conjugationYo = infinitive.replace("er", "o");
@@ -110,7 +110,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
             }
 
-            protected void conjugateIrVerb() {
+            protected void conjugateIrVerbPresent() {
 
                 // replaces the -ir ending in the infinitive with present tense ending
                 conjugationYo = infinitive.replace("ir", "o");
@@ -124,6 +124,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
             }
 
+            // Very messy method for conjugation of present tense irregular verbs
             protected void conjugateIrregularVerb() {
 
                 if (infinitive.equals("ir")) {
@@ -134,7 +135,96 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                     conjugationOs = "vaís";
                     conjugationEllos = "van";
                     setText();
-                } else {
+                } else if (infinitive.equals("ser")) {
+                    conjugationYo = "soy";
+                    conjugationTu = "eres";
+                    conjugationEl = "es";
+                    conjugationNos = "somos";
+                    conjugationOs = "soís";
+                    conjugationEllos = "son";
+                    setText();
+                } else if (infinitive.equals("estar")) {
+                    conjugationYo = "estoy";
+                    conjugationTu = "estás";
+                    conjugationEl = "está";
+                    conjugationNos = "estamos";
+                    conjugationOs = "estáis";
+                    conjugationEllos = "están";
+                    setText();
+                } else if (infinitive.equals("dar")) {
+                    conjugationYo = "doy";
+                    conjugationTu = "das";
+                    conjugationEl = "da";
+                    conjugationNos = "damos";
+                    conjugationOs = "dais";
+                    conjugationEllos = "dan";
+                    setText();
+                } else if (infinitive.equals("saber")) {
+                    conjugationYo = "sé";
+                    conjugationTu = "sabes";
+                    conjugationEl = "sabe";
+                    conjugationNos = "sabemos";
+                    conjugationOs = "sabéis";
+                    conjugationEllos = "saben";
+                    setText();
+                } else if (infinitive.equals("conocer")) {
+                    conjugationYo = "conozco";
+                    conjugationTu = "conoces";
+                    conjugationEl = "conoce";
+                    conjugationNos = "conocemos";
+                    conjugationOs = "conocéis";
+                    conjugationEllos = "conocen";
+                    setText();
+                } else if (infinitive.equals("hacer")) {
+                    conjugationYo = "hago";
+                    conjugationTu = "haces";
+                    conjugationEl = "hace";
+                    conjugationNos = "hacemos";
+                    conjugationOs = "hacéis";
+                    conjugationEllos = "hacen";
+                    setText();
+                } else if (infinitive.equals("traer")) {
+                    conjugationYo = "traigo";
+                    conjugationTu = "traes";
+                    conjugationEl = "trae";
+                    conjugationNos = "traemos";
+                    conjugationOs = "traéis";
+                    conjugationEllos = "traen";
+                    setText();
+                } else if (infinitive.equals("poner")) {
+                    conjugationYo = "pongo";
+                    conjugationTu = "pones";
+                    conjugationEl = "pone";
+                    conjugationNos = "ponemos";
+                    conjugationOs = "ponéis";
+                    conjugationEllos = "ponen";
+                    setText();
+                } else if (infinitive.equals("ver")) {
+                    conjugationYo = "veo";
+                    conjugationTu = "ves";
+                    conjugationEl = "ve";
+                    conjugationNos = "vemos";
+                    conjugationOs = "véis";
+                    conjugationEllos = "ven";
+                    setText();
+                } else if (infinitive.equals("salir")) {
+                    conjugationYo = "salgo";
+                    conjugationTu = "sales";
+                    conjugationEl = "sale";
+                    conjugationNos = "salemos";
+                    conjugationOs = "salís";
+                    conjugationEllos = "salen";
+                    setText();
+                } else if (infinitive.equals("conducir")) {
+                    conjugationYo = "conduzco";
+                    conjugationTu = "conduces";
+                    conjugationEl = "conduce";
+                    conjugationNos = "conducimos";
+                    conjugationOs = "conducís";
+                    conjugationEllos = "conducen";
+                    setText();
+                }
+                else {
                     Log.e("ERROR", "Cannot conjugate irregular verb!");
                 }
             }

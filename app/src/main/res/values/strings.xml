@@ -10,12 +10,12 @@
     <string name="present_form_activity">Present Tense Conjugation</string>
 
     <!-- Conjugation labels -->
-    <string name="yo">Yo form: </string>
-    <string name="tu">Tú form: </string>
-    <string name="el">El/ella/usted form: </string>
-    <string name="nos">Nosotros form: </string>
-    <string name="os">Vosotros form: </string>
-    <string name="ellos">Ellos/ellas/ustedes form: </string>
+    <string name="yo">Yo: </string>
+    <string name="tu">Tú: </string>
+    <string name="el">El/ella/usted:</string>
+    <string name="nos">Nosotros: </string>
+    <string name="os">Vosotros: </string>
+    <string name="ellos">Ellos/ellas/ustedes: </string>
 
     <string-array name="conjugation_types">
         <item>Present</item>
