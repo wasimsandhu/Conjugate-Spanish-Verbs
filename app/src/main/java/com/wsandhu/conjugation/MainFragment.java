@@ -2,6 +2,7 @@ package com.wsandhu.conjugation;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +15,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class MainFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     String infinitive;
     String conjugationYo, conjugationTu, conjugationEl, conjugationNos, conjugationOs, conjugationEllos;
-    List<String> irregularVerbs = Arrays.asList("ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
-            "ver", "salir", "conducir");
+
+    // TODO Complete list of different types of irregular verbs
+    String[] irregularVerbs = {"ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
+            "ver", "salir", "conducir"};
 
     public MainFragment() {
 
@@ -63,14 +65,14 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                 boolean isEndingAr = infinitive.endsWith("ar");
                 boolean isEndingEr = infinitive.endsWith("er");
                 boolean isEndingIr = infinitive.endsWith("ir");
-                boolean isIrregularVerb = irregularVerbs.contains(infinitive);
+                boolean isIrregularVerb = Arrays.asList(irregularVerbs).contains(infinitive);
 
                 // Check to see what kind of verb it is before conjugating
                 if (isEndingAr) {
                     conjugateArVerb();
                 } else if (isEndingEr) {
                     conjugateErVerb();
-                } else if (isEndingIr) {
+                } else if (isEndingIr && !isIrregularVerb) {
                     conjugateIrVerb();
                 } else if (isIrregularVerb) {
                     conjugateIrregularVerb();
@@ -90,13 +92,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                 conjugationOs = infinitive.replace("ar", "aís");
                 conjugationEllos = infinitive.replace("ar", "an");
 
-                // Sets the text of these placeholder text views to the conjugation :)
-                mYoTextView.setText(conjugationYo);
-                mTuTextView.setText(conjugationTu);
-                mElTextView.setText(conjugationEl);
-                mNosTextView.setText(conjugationNos);
-                mOsTextView.setText(conjugationOs);
-                mEllosTextView.setText(conjugationEllos);
+                setText();
 
             }
 
@@ -110,13 +106,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                 conjugationOs = infinitive.replace("er", "eís");
                 conjugationEllos = infinitive.replace("er", "en");
 
-                // Sets the text of these placeholder text views to the conjugation :)
-                mYoTextView.setText(conjugationYo);
-                mTuTextView.setText(conjugationTu);
-                mElTextView.setText(conjugationEl);
-                mNosTextView.setText(conjugationNos);
-                mOsTextView.setText(conjugationOs);
-                mEllosTextView.setText(conjugationEllos);
+                setText();
 
             }
 
@@ -130,33 +120,33 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                 conjugationOs = infinitive.replace("ir", "ís");
                 conjugationEllos = infinitive.replace("ir", "en");
 
-                // Sets the text of these placeholder text views to the conjugation :)
-                mYoTextView.setText(conjugationYo);
-                mTuTextView.setText(conjugationTu);
-                mElTextView.setText(conjugationEl);
-                mNosTextView.setText(conjugationNos);
-                mOsTextView.setText(conjugationOs);
-                mEllosTextView.setText(conjugationEllos);
+                setText();
 
             }
 
             protected void conjugateIrregularVerb() {
 
-                if (infinitive == "ir") {
+                if (infinitive.equals("ir")) {
                     conjugationYo = "voy";
                     conjugationTu = "vas";
                     conjugationEl = "va";
                     conjugationNos = "vamos";
                     conjugationOs = "vaís";
                     conjugationEllos = "van";
-
-                    mYoTextView.setText(conjugationYo);
-                    mTuTextView.setText(conjugationTu);
-                    mElTextView.setText(conjugationEl);
-                    mNosTextView.setText(conjugationNos);
-                    mOsTextView.setText(conjugationOs);
-                    mEllosTextView.setText(conjugationEllos);
+                    setText();
+                } else {
+                    Log.e("ERROR", "Cannot conjugate irregular verb!");
                 }
+            }
+
+            // Sets the text of these placeholder text views to the conjugation
+            protected void setText() {
+                mYoTextView.setText(conjugationYo);
+                mTuTextView.setText(conjugationTu);
+                mElTextView.setText(conjugationEl);
+                mNosTextView.setText(conjugationNos);
+                mOsTextView.setText(conjugationOs);
+                mEllosTextView.setText(conjugationEllos);
             }
 
         });
@@ -165,9 +155,11 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+    // TODO: Figure out how to properly use this method!
+    public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
+        parent.getItemAtPosition(1);
     }
 
     @Override
