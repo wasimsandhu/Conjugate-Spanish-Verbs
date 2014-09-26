@@ -21,9 +21,14 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     String infinitive;
     String conjugationYo, conjugationTu, conjugationEl, conjugationNos, conjugationOs, conjugationEllos;
 
+    Spinner mConjugationTypeSpinner;
+
+    boolean isPresentTense, isPreteriteTense, isImperfectTense, isFutureTense, isImperativeTense, isSubjunctiveTense;
+
+
     // TODO Complete list of different types of irregular verbs
     String[] irregularVerbs = {"ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
-            "ver", "salir", "conducir"};
+            "ver", "salir", "conducir", "jugar"};
 
     public MainFragment() {
 
@@ -43,7 +48,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         final TextView mEllosTextView = (TextView) rootView.findViewById(R.id.ellosTextView);
 
         // Spinner for picking how to conjugate the verb
-        Spinner mConjugationTypeSpinner = (Spinner) rootView.findViewById(R.id.conjugationTypeSpinner);
+        mConjugationTypeSpinner = (Spinner) rootView.findViewById(R.id.conjugationTypeSpinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.conjugation_types, android.R.layout.simple_spinner_item);
@@ -59,9 +64,10 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         mConjugateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // The string "infinitive" is whatever the user types in the text field
                 infinitive = mMainTextField.getText().toString();
 
+                // booleans for checking verb type
                 boolean isEndingAr = infinitive.endsWith("ar");
                 boolean isEndingEr = infinitive.endsWith("er");
                 boolean isEndingIr = infinitive.endsWith("ir");
@@ -223,8 +229,15 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                     conjugationOs = "conducís";
                     conjugationEllos = "conducen";
                     setText();
-                }
-                else {
+                } else if (infinitive.equals("jugar")) {
+                    conjugationYo = "juego";
+                    conjugationTu = "juegas";
+                    conjugationEl = "juega";
+                    conjugationNos = "jugamos";
+                    conjugationOs = "jugáis";
+                    conjugationEllos = "juegan";
+                    setText();
+                } else {
                     Log.e("ERROR", "Cannot conjugate irregular verb!");
                 }
             }
@@ -246,10 +259,24 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     @Override
     // TODO: Figure out how to properly use this method!
-    public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
-        parent.getItemAtPosition(1);
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+        mConjugationTypeSpinner.getItemAtPosition(position);
+
+        // Changes the boolean flags depending on position of selected item in spinner
+        switch(position) {
+            case 0:
+                isPresentTense = true;
+            case 1:
+                isPreteriteTense = true;
+            case 2:
+                isImperfectTense = true;
+            case 3:
+                isFutureTense = true;
+            case 4:
+                isImperativeTense = true;
+            case 5:
+                isSubjunctiveTense = true;
+        }
     }
 
     @Override
