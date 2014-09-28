@@ -23,8 +23,9 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     Spinner mConjugationTypeSpinner;
 
-    boolean isPresentTense, isPreteriteTense, isImperfectTense, isFutureTense, isImperativeTense, isSubjunctiveTense;
+    boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb;
 
+    int verbTense;
 
     // TODO Complete list of different types of irregular verbs
     String[] irregularVerbs = {"ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
@@ -64,22 +65,39 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         mConjugateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                conjugate();
+            }
+
+            protected void conjugate() {
                 // The string "infinitive" is whatever the user types in the text field
                 infinitive = mMainTextField.getText().toString();
 
                 // booleans for checking verb type
-                boolean isEndingAr = infinitive.endsWith("ar");
-                boolean isEndingEr = infinitive.endsWith("er");
-                boolean isEndingIr = infinitive.endsWith("ir");
-                boolean isIrregularVerb = Arrays.asList(irregularVerbs).contains(infinitive);
+                isEndingAr = infinitive.endsWith("ar");
+                isEndingEr = infinitive.endsWith("er");
+                isEndingIr = infinitive.endsWith("ir");
+                isIrregularVerb = Arrays.asList(irregularVerbs).contains(infinitive);
 
                 // Check to see what kind of verb it is before conjugating
                 if (isEndingAr && !isIrregularVerb) {
-                    conjugateArVerbPresent();
+                    // checks verb tense and then calls respective method
+                    if (verbTense == 0) {
+                        conjugateArVerbPresent();
+                    } else if (verbTense == 1) {
+                        conjugateArVerbPreterite();
+                    }
                 } else if (isEndingEr && !isIrregularVerb) {
-                    conjugateErVerbPresent();
+                    if (verbTense == 0) {
+                        conjugateErVerbPresent();
+                    } else if (verbTense == 1) {
+                        conjugateErIrVerbPreterite();
+                    }
                 } else if (isEndingIr && !isIrregularVerb) {
-                    conjugateIrVerbPresent();
+                    if (verbTense == 0) {
+                        conjugateIrVerbPresent();
+                    } else if (verbTense == 1) {
+                        conjugateErIrVerbPreterite();
+                    }
                 } else if (isIrregularVerb) {
                     conjugateIrregularVerb();
                 } else {
@@ -88,6 +106,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                 }
             }
 
+            /* METHODS FOR PRESENT TENSE CONJUGATIONS */
             protected void conjugateArVerbPresent() {
 
                 // replaces the ending in the -ar infinitive with present tense ending
@@ -104,7 +123,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
             protected void conjugateErVerbPresent() {
 
-                // replaces the -er ending in the infinitive with present tense ending
                 conjugationYo = infinitive.replace("er", "o");
                 conjugationTu = infinitive.replace("er", "es");
                 conjugationEl = infinitive.replace("er", "e");
@@ -118,7 +136,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
             protected void conjugateIrVerbPresent() {
 
-                // replaces the -ir ending in the infinitive with present tense ending
                 conjugationYo = infinitive.replace("ir", "o");
                 conjugationTu = infinitive.replace("ir", "es");
                 conjugationEl = infinitive.replace("ir", "e");
@@ -128,6 +145,31 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
                 setText();
 
+            }
+
+            /* METHODS FOR PRETERITE TENSE CONJUGATIONS */
+            protected void conjugateArVerbPreterite() {
+
+                conjugationYo = infinitive.replace("ar", "é");
+                conjugationTu = infinitive.replace("ar", "aste");
+                conjugationEl = infinitive.replace("ar", "ó");
+                conjugationNos = infinitive.replace("ar", "amos");
+                conjugationOs = infinitive.replace("ar", "asteis");
+                conjugationEllos = infinitive.replace("ar", "aron");
+
+                setText();
+            }
+
+            protected void conjugateErIrVerbPreterite() {
+
+                conjugationYo = infinitive.replace("ir", "í");
+                conjugationTu = infinitive.replace("ir", "iste");
+                conjugationEl = infinitive.replace("ir", "ió");
+                conjugationNos = infinitive.replace("ir", "imos");
+                conjugationOs = infinitive.replace("ir", "isteis");
+                conjugationEllos = infinitive.replace("ir", "ieron");
+
+                setText();
             }
 
             // Very messy method for conjugation of present tense irregular verbs
@@ -260,23 +302,11 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     @Override
     // TODO: Figure out how to properly use this method!
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-        mConjugationTypeSpinner.getItemAtPosition(position);
-
-        // Changes the boolean flags depending on position of selected item in spinner
-        switch(position) {
-            case 0:
-                isPresentTense = true;
-            case 1:
-                isPreteriteTense = true;
-            case 2:
-                isImperfectTense = true;
-            case 3:
-                isFutureTense = true;
-            case 4:
-                isImperativeTense = true;
-            case 5:
-                isSubjunctiveTense = true;
-        }
+        // verbTense is the position of the item selected in the spinner
+        verbTense = mConjugationTypeSpinner.getSelectedItemPosition();
+        /* 0 = present tense, 1 = preterite tense, 2 = imperfect tense, 3 = future tense,
+           4 = imperative tense, 5 = subjunctive tense
+         */
     }
 
     @Override
