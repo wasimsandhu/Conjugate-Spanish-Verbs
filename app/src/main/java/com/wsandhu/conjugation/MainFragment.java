@@ -2,7 +2,6 @@ package com.wsandhu.conjugation;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +26,9 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     int verbTense;
 
-    // TODO Complete list of different types of irregular verbs
+    // TODO Complete list of irregular verbs
     String[] irregularVerbs = {"ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
-            "ver", "salir", "conducir", "jugar"};
+            "ver", "salir", "conducir", "jugar", "haber", "poder", "querer", "tener", "venir", "decir"};
 
     public MainFragment() {
 
@@ -85,18 +84,26 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateArVerbPresent();
                     } else if (verbTense == 1) {
                         conjugateArVerbPreterite();
+                    } else if (verbTense == 3) {
+                        conjugateVerbFuture();
                     }
                 } else if (isEndingEr && !isIrregularVerb) {
+                    // checks verb tense and then calls respective method
                     if (verbTense == 0) {
                         conjugateErVerbPresent();
                     } else if (verbTense == 1) {
                         conjugateErIrVerbPreterite();
+                    } else if (verbTense == 3) {
+                        conjugateVerbFuture();
                     }
                 } else if (isEndingIr && !isIrregularVerb) {
+                    // checks verb tense and then calls respective method
                     if (verbTense == 0) {
                         conjugateIrVerbPresent();
                     } else if (verbTense == 1) {
                         conjugateErIrVerbPreterite();
+                    } else if (verbTense == 3) {
+                        conjugateVerbFuture();
                     }
                 } else if (isIrregularVerb) {
                     conjugateIrregularVerb();
@@ -172,115 +179,207 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                 setText();
             }
 
+            /* METHODS FOR FUTURE TENSE CONJUGATIONS */
+            protected void conjugateVerbFuture() {
+
+                conjugationYo = infinitive + "é";
+                conjugationTu = infinitive + "ás";
+                conjugationEl = infinitive + "á";
+                conjugationNos = infinitive + "emos";
+                conjugationOs = infinitive + "éis";
+                conjugationEllos = infinitive + "án";
+
+                setText();
+            }
+
             // Very messy method for conjugation of present tense irregular verbs
+            // TODO Clean up or move this method
             protected void conjugateIrregularVerb() {
 
-                if (infinitive.equals("ir")) {
-                    conjugationYo = "voy";
-                    conjugationTu = "vas";
-                    conjugationEl = "va";
-                    conjugationNos = "vamos";
-                    conjugationOs = "vaís";
-                    conjugationEllos = "van";
-                    setText();
-                } else if (infinitive.equals("ser")) {
-                    conjugationYo = "soy";
-                    conjugationTu = "eres";
-                    conjugationEl = "es";
-                    conjugationNos = "somos";
-                    conjugationOs = "soís";
-                    conjugationEllos = "son";
-                    setText();
-                } else if (infinitive.equals("estar")) {
-                    conjugationYo = "estoy";
-                    conjugationTu = "estás";
-                    conjugationEl = "está";
-                    conjugationNos = "estamos";
-                    conjugationOs = "estáis";
-                    conjugationEllos = "están";
-                    setText();
-                } else if (infinitive.equals("dar")) {
-                    conjugationYo = "doy";
-                    conjugationTu = "das";
-                    conjugationEl = "da";
-                    conjugationNos = "damos";
-                    conjugationOs = "dais";
-                    conjugationEllos = "dan";
-                    setText();
-                } else if (infinitive.equals("saber")) {
-                    conjugationYo = "sé";
-                    conjugationTu = "sabes";
-                    conjugationEl = "sabe";
-                    conjugationNos = "sabemos";
-                    conjugationOs = "sabéis";
-                    conjugationEllos = "saben";
-                    setText();
-                } else if (infinitive.equals("conocer")) {
-                    conjugationYo = "conozco";
-                    conjugationTu = "conoces";
-                    conjugationEl = "conoce";
-                    conjugationNos = "conocemos";
-                    conjugationOs = "conocéis";
-                    conjugationEllos = "conocen";
-                    setText();
-                } else if (infinitive.equals("hacer")) {
-                    conjugationYo = "hago";
-                    conjugationTu = "haces";
-                    conjugationEl = "hace";
-                    conjugationNos = "hacemos";
-                    conjugationOs = "hacéis";
-                    conjugationEllos = "hacen";
-                    setText();
-                } else if (infinitive.equals("traer")) {
-                    conjugationYo = "traigo";
-                    conjugationTu = "traes";
-                    conjugationEl = "trae";
-                    conjugationNos = "traemos";
-                    conjugationOs = "traéis";
-                    conjugationEllos = "traen";
-                    setText();
-                } else if (infinitive.equals("poner")) {
-                    conjugationYo = "pongo";
-                    conjugationTu = "pones";
-                    conjugationEl = "pone";
-                    conjugationNos = "ponemos";
-                    conjugationOs = "ponéis";
-                    conjugationEllos = "ponen";
-                    setText();
-                } else if (infinitive.equals("ver")) {
-                    conjugationYo = "veo";
-                    conjugationTu = "ves";
-                    conjugationEl = "ve";
-                    conjugationNos = "vemos";
-                    conjugationOs = "véis";
-                    conjugationEllos = "ven";
-                    setText();
-                } else if (infinitive.equals("salir")) {
-                    conjugationYo = "salgo";
-                    conjugationTu = "sales";
-                    conjugationEl = "sale";
-                    conjugationNos = "salemos";
-                    conjugationOs = "salís";
-                    conjugationEllos = "salen";
-                    setText();
-                } else if (infinitive.equals("conducir")) {
-                    conjugationYo = "conduzco";
-                    conjugationTu = "conduces";
-                    conjugationEl = "conduce";
-                    conjugationNos = "conducimos";
-                    conjugationOs = "conducís";
-                    conjugationEllos = "conducen";
-                    setText();
-                } else if (infinitive.equals("jugar")) {
-                    conjugationYo = "juego";
-                    conjugationTu = "juegas";
-                    conjugationEl = "juega";
-                    conjugationNos = "jugamos";
-                    conjugationOs = "jugáis";
-                    conjugationEllos = "juegan";
-                    setText();
-                } else {
-                    Log.e("ERROR", "Cannot conjugate irregular verb!");
+                // Present tense irregular verbs
+                if (verbTense == 0) {
+                    if (infinitive.equals("ir")) {
+                        conjugationYo = "voy";
+                        conjugationTu = "vas";
+                        conjugationEl = "va";
+                        conjugationNos = "vamos";
+                        conjugationOs = "vaís";
+                        conjugationEllos = "van";
+                        setText();
+                    } else if (infinitive.equals("ser")) {
+                        conjugationYo = "soy";
+                        conjugationTu = "eres";
+                        conjugationEl = "es";
+                        conjugationNos = "somos";
+                        conjugationOs = "soís";
+                        conjugationEllos = "son";
+                        setText();
+                    } else if (infinitive.equals("estar")) {
+                        conjugationYo = "estoy";
+                        conjugationTu = "estás";
+                        conjugationEl = "está";
+                        conjugationNos = "estamos";
+                        conjugationOs = "estáis";
+                        conjugationEllos = "están";
+                        setText();
+                    } else if (infinitive.equals("dar")) {
+                        conjugationYo = "doy";
+                        conjugationTu = "das";
+                        conjugationEl = "da";
+                        conjugationNos = "damos";
+                        conjugationOs = "dais";
+                        conjugationEllos = "dan";
+                        setText();
+                    } else if (infinitive.equals("saber")) {
+                        conjugationYo = "sé";
+                        conjugationTu = "sabes";
+                        conjugationEl = "sabe";
+                        conjugationNos = "sabemos";
+                        conjugationOs = "sabéis";
+                        conjugationEllos = "saben";
+                        setText();
+                    } else if (infinitive.equals("conocer")) {
+                        conjugationYo = "conozco";
+                        conjugationTu = "conoces";
+                        conjugationEl = "conoce";
+                        conjugationNos = "conocemos";
+                        conjugationOs = "conocéis";
+                        conjugationEllos = "conocen";
+                        setText();
+                    } else if (infinitive.equals("hacer")) {
+                        conjugationYo = "hago";
+                        conjugationTu = "haces";
+                        conjugationEl = "hace";
+                        conjugationNos = "hacemos";
+                        conjugationOs = "hacéis";
+                        conjugationEllos = "hacen";
+                        setText();
+                    } else if (infinitive.equals("traer")) {
+                        conjugationYo = "traigo";
+                        conjugationTu = "traes";
+                        conjugationEl = "trae";
+                        conjugationNos = "traemos";
+                        conjugationOs = "traéis";
+                        conjugationEllos = "traen";
+                        setText();
+                    } else if (infinitive.equals("poner")) {
+                        conjugationYo = "pongo";
+                        conjugationTu = "pones";
+                        conjugationEl = "pone";
+                        conjugationNos = "ponemos";
+                        conjugationOs = "ponéis";
+                        conjugationEllos = "ponen";
+                        setText();
+                    } else if (infinitive.equals("ver")) {
+                        conjugationYo = "veo";
+                        conjugationTu = "ves";
+                        conjugationEl = "ve";
+                        conjugationNos = "vemos";
+                        conjugationOs = "véis";
+                        conjugationEllos = "ven";
+                        setText();
+                    } else if (infinitive.equals("salir")) {
+                        conjugationYo = "salgo";
+                        conjugationTu = "sales";
+                        conjugationEl = "sale";
+                        conjugationNos = "salemos";
+                        conjugationOs = "salís";
+                        conjugationEllos = "salen";
+                        setText();
+                    } else if (infinitive.equals("conducir")) {
+                        conjugationYo = "conduzco";
+                        conjugationTu = "conduces";
+                        conjugationEl = "conduce";
+                        conjugationNos = "conducimos";
+                        conjugationOs = "conducís";
+                        conjugationEllos = "conducen";
+                        setText();
+                    } else if (infinitive.equals("jugar")) {
+                        conjugationYo = "juego";
+                        conjugationTu = "juegas";
+                        conjugationEl = "juega";
+                        conjugationNos = "jugamos";
+                        conjugationOs = "jugáis";
+                        conjugationEllos = "juegan";
+                        setText();
+                    } else if (infinitive.equals("poder")) {
+                        conjugationYo = "puedo";
+                        conjugationTu = "puedes";
+                        conjugationEl = "puede";
+                        conjugationNos = "podemos";
+                        conjugationOs = "podéis";
+                        conjugationEllos = "pueden";
+                        setText();
+                    } else if (infinitive.equals("querer")) {
+                        conjugationYo = "quiero";
+                        conjugationTu = "quieres";
+                        conjugationEl = "quiere";
+                        conjugationNos = "queremos";
+                        conjugationOs = "queréis";
+                        conjugationEllos = "quieren";
+                        setText();
+                    } else if (infinitive.equals("tener")) {
+                        conjugationYo = "tengo";
+                        conjugationTu = "tienes";
+                        conjugationEl = "tiene";
+                        conjugationNos = "tenemos";
+                        conjugationOs = "tenéis";
+                        conjugationEllos = "tienen";
+                        setText();
+                    } else if (infinitive.equals("decir")) {
+                        conjugationYo = "digo";
+                        conjugationTu = "dices";
+                        conjugationEl = "dice";
+                        conjugationNos = "dicemos";
+                        conjugationOs = "decís";
+                        conjugationEllos = "dicen";
+                        setText();
+                    } else if (infinitive.equals("venir")) {
+                        conjugationYo = "vengo";
+                        conjugationTu = "vienes";
+                        conjugationEl = "viene";
+                        conjugationNos = "venimos";
+                        conjugationOs = "venís";
+                        conjugationEllos = "vienen";
+                        setText();
+                    }
+                    // Preterite tense irregular verbs
+                } else if (verbTense == 1) {
+                    // TODO irregular preterite tense verbs
+
+                    // Future tense irregular verbs
+                } else if (verbTense == 3) {
+                    if (infinitive.equals("haber")) {
+                        infinitive = "habr";
+                        conjugateVerbFuture();
+                    } else if (infinitive.equals("poder")) {
+                        infinitive = "podr";
+                        conjugateVerbFuture();
+                    } else if (infinitive.equals("querer")) {
+                        infinitive = "querr";
+                        conjugateVerbFuture();
+                    } else if (infinitive.equals("saber")) {
+                        infinitive = "sabr";
+                        conjugateVerbFuture();
+                    } else if (infinitive.equals("poner")) {
+                        infinitive = "pondr";
+                        conjugateVerbFuture();
+                    } else if (infinitive.equals("salir")) {
+                        infinitive = "saldr";
+                        conjugateVerbFuture();
+                    } else if (infinitive.equals("tener")) {
+                        infinitive = "tendr";
+                        conjugateVerbFuture();
+                    } else if (infinitive.equals("venir")) {
+                        infinitive = "vendr";
+                        conjugateVerbFuture();
+                    } else if (infinitive.equals("decir")) {
+                        infinitive = "dir";
+                        conjugateVerbFuture();
+                    } else if (infinitive.equals("hacer")) {
+                        infinitive = "har";
+                        conjugateVerbFuture();
+                    }
                 }
             }
 
@@ -300,7 +399,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     }
 
     @Override
-    // TODO: Figure out how to properly use this method!
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
         // verbTense is the position of the item selected in the spinner
         verbTense = mConjugationTypeSpinner.getSelectedItemPosition();
