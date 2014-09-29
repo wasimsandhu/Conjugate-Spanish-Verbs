@@ -156,8 +156,159 @@ public class IrregularVerb {
             }
             // Preterite tense irregular verbs
         } else if (MainFragment.verbTense == 1) {
-            // TODO irregular preterite tense verbs
-
+            if (MainFragment.infinitive.equals("ir")) {
+                MainFragment.conjugationYo = "fui";
+                MainFragment.conjugationTu = "fuiste";
+                MainFragment.conjugationEl = "fue";
+                MainFragment.conjugationNos = "fuimos";
+                MainFragment.conjugationOs = "fuisteis";
+                MainFragment.conjugationEllos = "fueron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("ser")) {
+                MainFragment.conjugationYo = "fui";
+                MainFragment.conjugationTu = "fuiste";
+                MainFragment.conjugationEl = "fue";
+                MainFragment.conjugationNos = "fuimos";
+                MainFragment.conjugationOs = "fuisteis";
+                MainFragment.conjugationEllos = "fueron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("estar")) {
+                MainFragment.conjugationYo = "estuve";
+                MainFragment.conjugationTu = "estuviste";
+                MainFragment.conjugationEl = "estuvo";
+                MainFragment.conjugationNos = "estuvimos";
+                MainFragment.conjugationOs = "estuvisteis";
+                MainFragment.conjugationEllos = "estuvieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("dar")) {
+                MainFragment.conjugationYo = "di";
+                MainFragment.conjugationTu = "diste";
+                MainFragment.conjugationEl = "dio";
+                MainFragment.conjugationNos = "dimos";
+                MainFragment.conjugationOs = "disteis";
+                MainFragment.conjugationEllos = "dieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("saber")) {
+                MainFragment.conjugationYo = "supe";
+                MainFragment.conjugationTu = "supiste";
+                MainFragment.conjugationEl = "supo";
+                MainFragment.conjugationNos = "supimos";
+                MainFragment.conjugationOs = "supisteis";
+                MainFragment.conjugationEllos = "supieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("conocer")) {
+                MainFragment.conjugationYo = "conocí";
+                MainFragment.conjugationTu = "conociste";
+                MainFragment.conjugationEl = "conoció";
+                MainFragment.conjugationNos = "conocimos";
+                MainFragment.conjugationOs = "conocisteis";
+                MainFragment.conjugationEllos = "conocieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("hacer")) {
+                MainFragment.conjugationYo = "hice";
+                MainFragment.conjugationTu = "hiciste";
+                MainFragment.conjugationEl = "hizo";
+                MainFragment.conjugationNos = "hicimos";
+                MainFragment.conjugationOs = "hicisteis";
+                MainFragment.conjugationEllos = "hicieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("traer")) {
+                MainFragment.conjugationYo = "traje";
+                MainFragment.conjugationTu = "trajiste";
+                MainFragment.conjugationEl = "trajo";
+                MainFragment.conjugationNos = "trajimos";
+                MainFragment.conjugationOs = "trajisteis";
+                MainFragment.conjugationEllos = "trajeron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("poner")) {
+                MainFragment.conjugationYo = "puse";
+                MainFragment.conjugationTu = "pusiste";
+                MainFragment.conjugationEl = "puso";
+                MainFragment.conjugationNos = "pusimos";
+                MainFragment.conjugationOs = "pusisteis";
+                MainFragment.conjugationEllos = "pusieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("ver")) {
+                MainFragment.conjugationYo = "ví";
+                MainFragment.conjugationTu = "viste";
+                MainFragment.conjugationEl = "vió";
+                MainFragment.conjugationNos = "vimos";
+                MainFragment.conjugationOs = "visteis";
+                MainFragment.conjugationEllos = "vieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("salir")) {
+                MainFragment.conjugationYo = "salí";
+                MainFragment.conjugationTu = "saliste";
+                MainFragment.conjugationEl = "salió";
+                MainFragment.conjugationNos = "salimos";
+                MainFragment.conjugationOs = "salisteis";
+                MainFragment.conjugationEllos = "salieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("conducir")) {
+                MainFragment.conjugationYo = "conduje";
+                MainFragment.conjugationTu = "condujiste";
+                MainFragment.conjugationEl = "condujo";
+                MainFragment.conjugationNos = "condujimos";
+                MainFragment.conjugationOs = "condujisteis";
+                MainFragment.conjugationEllos = "condujeron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("jugar")) {
+                MainFragment.conjugationYo = "jugué";
+                MainFragment.conjugationTu = "jugiste";
+                MainFragment.conjugationEl = "jugó";
+                MainFragment.conjugationNos = "jugamos";
+                MainFragment.conjugationOs = "jugasteis";
+                MainFragment.conjugationEllos = "jugaron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("haber")) {
+                MainFragment.conjugationYo = "hube";
+                MainFragment.conjugationTu = "hubiste";
+                MainFragment.conjugationEl = "hubo";
+                MainFragment.conjugationNos = "hubimos";
+                MainFragment.conjugationOs = "hubisteis";
+                MainFragment.conjugationEllos = "hubieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("poder")) {
+                MainFragment.conjugationYo = "pude";
+                MainFragment.conjugationTu = "pudiste";
+                MainFragment.conjugationEl = "pudo";
+                MainFragment.conjugationNos = "pudimos";
+                MainFragment.conjugationOs = "pudisteis";
+                MainFragment.conjugationEllos = "pudieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("querer")) {
+                MainFragment.conjugationYo = "quise";
+                MainFragment.conjugationTu = "quisiste";
+                MainFragment.conjugationEl = "quiso";
+                MainFragment.conjugationNos = "quisimos";
+                MainFragment.conjugationOs = "quisisteis";
+                MainFragment.conjugationEllos = "quisieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("tener")) {
+                MainFragment.conjugationYo = "tuve";
+                MainFragment.conjugationTu = "tuviste";
+                MainFragment.conjugationEl = "tuvo";
+                MainFragment.conjugationNos = "tuvimos";
+                MainFragment.conjugationOs = "tuvisteis";
+                MainFragment.conjugationEllos = "tuvieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("venir")) {
+                MainFragment.conjugationYo = "vine";
+                MainFragment.conjugationTu = "viniste";
+                MainFragment.conjugationEl = "vino";
+                MainFragment.conjugationNos = "vinimos";
+                MainFragment.conjugationOs = "visteis";
+                MainFragment.conjugationEllos = "vinieron";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("decir")) {
+                MainFragment.conjugationYo = "dije";
+                MainFragment.conjugationTu = "dijiste";
+                MainFragment.conjugationEl = "dijo";
+                MainFragment.conjugationNos = "dijimos";
+                MainFragment.conjugationOs = "dijisteis";
+                MainFragment.conjugationEllos = "dijeron";
+                MainFragment.setText();
+            }
             // Future tense irregular verbs
         } else if (MainFragment.verbTense == 3) {
             if (MainFragment.infinitive.equals("haber")) {
