@@ -25,7 +25,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     EditText mMainTextField;
     Button mConjugateButton;
 
-    boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb;
+    public static boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb;
 
     public static int verbTense;
 
@@ -87,6 +87,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateArVerbPresent();
                     } else if (verbTense == 1) {
                         conjugateArVerbPreterite();
+                    } else if (verbTense == 2) {
+                        conjugateArVerbImperfect();
                     } else if (verbTense == 3) {
                         conjugateVerbFuture();
                     }
@@ -96,6 +98,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateErVerbPresent();
                     } else if (verbTense == 1) {
                         conjugateErIrVerbPreterite();
+                    } else if (verbTense == 2) {
+                        conjugateErIrVerbImperfect();
                     } else if (verbTense == 3) {
                         conjugateVerbFuture();
                     }
@@ -105,6 +109,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateIrVerbPresent();
                     } else if (verbTense == 1) {
                         conjugateErIrVerbPreterite();
+                    } else if (verbTense == 2) {
+                        conjugateErIrVerbImperfect();
                     } else if (verbTense == 3) {
                         conjugateVerbFuture();
                     }
@@ -176,12 +182,49 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     public void conjugateErIrVerbPreterite() {
 
+        conjugationYo = infinitive.replace("er", "í");
+        conjugationTu = infinitive.replace("er", "iste");
+        conjugationEl = infinitive.replace("er", "ió");
+        conjugationNos = infinitive.replace("er", "imos");
+        conjugationOs = infinitive.replace("er", "isteis");
+        conjugationEllos = infinitive.replace("er", "ieron");
+
         conjugationYo = infinitive.replace("ir", "í");
         conjugationTu = infinitive.replace("ir", "iste");
         conjugationEl = infinitive.replace("ir", "ió");
         conjugationNos = infinitive.replace("ir", "imos");
         conjugationOs = infinitive.replace("ir", "isteis");
         conjugationEllos = infinitive.replace("ir", "ieron");
+
+        setText();
+    }
+
+    /* METHODS FOR IMPERFECT TENSE CONJUGATION */
+    public static void conjugateArVerbImperfect() {
+        conjugationYo = infinitive.replace("ar", "aba");
+        conjugationTu = infinitive.replace("ar", "abas");
+        conjugationEl = infinitive.replace("ar", "aba");
+        conjugationNos = infinitive.replace("ar", "ábamos");
+        conjugationOs = infinitive.replace("ar", "abais");
+        conjugationEllos = infinitive.replace("ar", "aban");
+
+        setText();
+    }
+
+    public static void conjugateErIrVerbImperfect() {
+        conjugationYo = infinitive.replace("er", "ía");
+        conjugationTu = infinitive.replace("er", "ías");
+        conjugationEl = infinitive.replace("er", "ía");
+        conjugationNos = infinitive.replace("er", "íamos");
+        conjugationOs = infinitive.replace("er", "íais");
+        conjugationEllos = infinitive.replace("er", "ían");
+
+        conjugationYo = infinitive.replace("ir", "ía");
+        conjugationTu = infinitive.replace("ir", "ías");
+        conjugationEl = infinitive.replace("ir", "ía");
+        conjugationNos = infinitive.replace("ir", "íamos");
+        conjugationOs = infinitive.replace("ir", "íais");
+        conjugationEllos = infinitive.replace("ir", "ían");
 
         setText();
     }

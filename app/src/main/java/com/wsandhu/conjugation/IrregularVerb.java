@@ -309,6 +309,43 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "dijeron";
                 MainFragment.setText();
             }
+            // Imperfect tense irregular verbs
+        } else if (MainFragment.verbTense == 2) {
+            boolean notIrregularInImperfect = !MainFragment.infinitive.equals("ir")
+                                                && !MainFragment.infinitive.equals("ser")
+                                                && !MainFragment.infinitive.equals("ver");
+
+            if (MainFragment.infinitive.equals("ir")) {
+                MainFragment.conjugationYo = "iba";
+                MainFragment.conjugationTu = "ibas";
+                MainFragment.conjugationEl = "iba";
+                MainFragment.conjugationNos = "íbamos";
+                MainFragment.conjugationOs = "ibais";
+                MainFragment.conjugationEllos = "iban";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("ser")) {
+                MainFragment.conjugationYo = "era";
+                MainFragment.conjugationTu = "eras";
+                MainFragment.conjugationEl = "era";
+                MainFragment.conjugationNos = "éramos";
+                MainFragment.conjugationOs = "erais";
+                MainFragment.conjugationEllos = "eran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("ver")) {
+                MainFragment.conjugationYo = "veía";
+                MainFragment.conjugationTu = "veías";
+                MainFragment.conjugationEl = "veía";
+                MainFragment.conjugationNos = "veíamos";
+                MainFragment.conjugationOs = "veíais";
+                MainFragment.conjugationEllos = "veían";
+                MainFragment.setText();
+            } else if (MainFragment.isEndingAr && notIrregularInImperfect) {
+                MainFragment.conjugateArVerbImperfect();
+            } else if (notIrregularInImperfect && MainFragment.isEndingEr) {
+                MainFragment.conjugateErIrVerbImperfect();
+            } else if (notIrregularInImperfect && MainFragment.isEndingIr) {
+                MainFragment.conjugateErIrVerbImperfect();
+            }
             // Future tense irregular verbs
         } else if (MainFragment.verbTense == 3) {
             if (MainFragment.infinitive.equals("haber")) {
