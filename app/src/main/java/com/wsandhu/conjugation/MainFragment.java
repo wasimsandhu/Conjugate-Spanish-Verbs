@@ -25,13 +25,16 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     EditText mMainTextField;
     Button mConjugateButton;
 
-    public static boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb;
+    public static boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb, hasStemChange, isYoGoVerb;
 
     public static int verbTense;
 
-    // TODO Create array of stem changing verbs and irregular yo verbs
     String[] irregularVerbs = {"ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
             "ver", "salir", "conducir", "jugar", "haber", "poder", "querer", "tener", "venir", "decir"};
+
+    // TODO Fill in these arrays and utilize them for imperative methods
+    String[] stemChangingVerbs = {};
+    String[] yoGoVerbs = {};
 
     public MainFragment() {
 
@@ -93,6 +96,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateVerbFuture();
                     } else if (verbTense == 4) {
                         conjugateVerbAffirmativeCommand();
+                    } else if (verbTense == 5) {
+                        conjugateVerbNegativeCommand();
                     }
                 } else if (isEndingEr && !isIrregularVerb) {
                     // checks verb tense and then calls respective method
@@ -106,6 +111,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateVerbFuture();
                     } else if (verbTense == 4) {
                         conjugateVerbAffirmativeCommand();
+                    } else if (verbTense == 5) {
+                        conjugateVerbNegativeCommand();
                     }
                 } else if (isEndingIr && !isIrregularVerb) {
                     // checks verb tense and then calls respective method
@@ -119,11 +126,13 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateVerbFuture();
                     } else if (verbTense == 4) {
                         conjugateVerbAffirmativeCommand();
+                    } else if (verbTense == 5) {
+                        conjugateVerbNegativeCommand();
                     }
                 } else if (isIrregularVerb) {
                     IrregularVerb.conjugate();
                 } else {
-                    Toast toast = Toast.makeText(getActivity(), "Could not conjugate the verb: " + infinitive, Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getActivity(), "No puedo conjugar eso. ¡Lo siento! ", Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }
@@ -250,7 +259,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     /* METHODS FOR IMPERATIVE TENSE CONJUGATION */
     public static void conjugateVerbAffirmativeCommand() {
-        conjugationYo = " " ;
+        conjugationYo = " ";
 
         // Tú commands are just present tense el/ella/usted
         if (isEndingAr) {
@@ -293,6 +302,45 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     public static void conjugateVerbNegativeCommand() {
         // TODO Figure this out
+        conjugationYo = " ";
+
+        // Tú commands are just present tense el/ella/usted
+        if (isEndingAr) {
+            conjugationTu = "no " + infinitive.replace("ar", "es");
+        } else if (isEndingEr) {
+            conjugationTu = "no " + infinitive.replace("er", "as");
+        } else if (isEndingIr) {
+            conjugationTu = "no " + infinitive.replace("er", "as");
+        }
+
+        // Usted commands use "opposite" endings
+        if (isEndingAr) {
+            conjugationEl = "no " + infinitive.replace("ar", "e");
+        } else if (isEndingEr) {
+            conjugationEl = "no " + infinitive.replace("er", "a");
+        } else if (isEndingIr) {
+            conjugationEl = "no " + infinitive.replace("ir", "a");
+        }
+
+        // Nosotros commands
+        if (isEndingAr) {
+            conjugationNos = "no " + infinitive.replace("ar", "emos");
+        } else if (isEndingEr) {
+            conjugationNos = "no " + infinitive.replace("er", "amos");
+        } else if (isEndingIr) {
+            conjugationNos = "no " + infinitive.replace("ir", "amos");
+        }
+
+        conjugationOs = " ";
+        if (isEndingAr) {
+            conjugationEllos = "no " + infinitive.replace("ar", "en");
+        } else if (isEndingEr) {
+            conjugationEllos = "no " + infinitive.replace("er", "an");
+        } else if (isEndingIr) {
+            conjugationEllos = "no " + infinitive.replace("ir", "an");
+        }
+
+        setText();
     }
 
     // Sets the text of these placeholder text views to the conjugation
@@ -303,6 +351,15 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         mNosTextView.setText(conjugationNos);
         mOsTextView.setText(conjugationOs);
         mEllosTextView.setText(conjugationEllos);
+    }
+
+    public static void clearText() {
+        mYoTextView.setText(" ");
+        mTuTextView.setText(" ");
+        mElTextView.setText(" ");
+        mNosTextView.setText(" ");
+        mOsTextView.setText(" ");
+        mEllosTextView.setText(" ");
     }
 
     @Override
