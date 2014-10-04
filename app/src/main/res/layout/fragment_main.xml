@@ -17,6 +17,7 @@
 
     <TextView
         android:id="@+id/yoLabelTextView"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/yo"
@@ -37,6 +38,7 @@
 
     <TextView
         android:id="@+id/tuLabelTextView"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tu"
@@ -57,6 +59,7 @@
 
     <TextView
         android:id="@+id/elLabelTextView"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/el"
@@ -77,6 +80,7 @@
 
     <TextView
         android:id="@+id/nosLabelTextView"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nos"
@@ -97,6 +101,7 @@
 
     <TextView
         android:id="@+id/osLabelTextView"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/os"
@@ -117,6 +122,7 @@
 
     <TextView
         android:id="@+id/ellosLabelTextView"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ellos"

@@ -29,7 +29,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     public static int verbTense;
 
-    // TODO Complete list of irregular verbs
+    // TODO Create array of stem changing verbs and irregular yo verbs
     String[] irregularVerbs = {"ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
             "ver", "salir", "conducir", "jugar", "haber", "poder", "querer", "tener", "venir", "decir"};
 
@@ -91,6 +91,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateArVerbImperfect();
                     } else if (verbTense == 3) {
                         conjugateVerbFuture();
+                    } else if (verbTense == 4) {
+                        conjugateVerbAffirmativeCommand();
                     }
                 } else if (isEndingEr && !isIrregularVerb) {
                     // checks verb tense and then calls respective method
@@ -102,6 +104,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateErIrVerbImperfect();
                     } else if (verbTense == 3) {
                         conjugateVerbFuture();
+                    } else if (verbTense == 4) {
+                        conjugateVerbAffirmativeCommand();
                     }
                 } else if (isEndingIr && !isIrregularVerb) {
                     // checks verb tense and then calls respective method
@@ -113,6 +117,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
                         conjugateErIrVerbImperfect();
                     } else if (verbTense == 3) {
                         conjugateVerbFuture();
+                    } else if (verbTense == 4) {
+                        conjugateVerbAffirmativeCommand();
                     }
                 } else if (isIrregularVerb) {
                     IrregularVerb.conjugate();
@@ -240,6 +246,53 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         conjugationEllos = infinitive + "án";
 
         setText();
+    }
+
+    /* METHODS FOR IMPERATIVE TENSE CONJUGATION */
+    public static void conjugateVerbAffirmativeCommand() {
+        conjugationYo = " " ;
+
+        // Tú commands are just present tense el/ella/usted
+        if (isEndingAr) {
+            conjugationTu = infinitive.replace("ar", "a");
+        } else if (isEndingEr) {
+            conjugationTu = infinitive.replace("er", "e");
+        } else if (isEndingIr) {
+            conjugationTu = infinitive.replace("er", "e");
+        }
+
+        // Usted commands use "opposite" endings
+        if (isEndingAr) {
+            conjugationEl = infinitive.replace("ar", "e");
+        } else if (isEndingEr) {
+            conjugationEl = infinitive.replace("er", "a");
+        } else if (isEndingIr) {
+            conjugationEl = infinitive.replace("ir", "a");
+        }
+
+        // Nosotros commands
+        if (isEndingAr) {
+            conjugationNos = infinitive.replace("ar", "emos");
+        } else if (isEndingEr) {
+            conjugationNos = infinitive.replace("er", "amos");
+        } else if (isEndingIr) {
+            conjugationNos = infinitive.replace("ir", "amos");
+        }
+
+        conjugationOs = " ";
+        if (isEndingAr) {
+            conjugationEllos = infinitive.replace("ar", "en");
+        } else if (isEndingEr) {
+            conjugationEllos = infinitive.replace("er", "an");
+        } else if (isEndingIr) {
+            conjugationEllos = infinitive.replace("ir", "an");
+        }
+
+        setText();
+    }
+
+    public static void conjugateVerbNegativeCommand() {
+        // TODO Figure this out
     }
 
     // Sets the text of these placeholder text views to the conjugation

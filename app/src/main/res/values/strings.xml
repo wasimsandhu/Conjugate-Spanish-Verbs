@@ -22,8 +22,12 @@
         <item>Preterite</item>
         <item>Imperfect</item>
         <item>Future</item>
-        <item>Imperative</item>
-        <item>Subjunctive</item>
+        <item>Affirmative Command</item>
+        <item>Negative Command</item>
+        <item>Present Subjunctive</item>
+        <item>Imperfect Subjunctive</item>
+        <item>Past Participle</item>
+        <item>Gerund</item>
     </string-array>
 
 </resources>
