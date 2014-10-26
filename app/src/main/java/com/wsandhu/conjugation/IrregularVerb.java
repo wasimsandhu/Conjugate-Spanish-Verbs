@@ -7,6 +7,11 @@ public class IrregularVerb {
 
     public static void conjugate() {
 
+        // Irregular yo endings
+        if (MainFragment.isIrregularYoVerb) {
+            conjugateIrregularYoVerb();
+        }
+
         // Present tense irregular verbs
         if (MainFragment.verbTense == 0) {
             if (MainFragment.infinitive.equals("ir")) {
@@ -50,7 +55,7 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "saben";
                 MainFragment.setText();
             } else if (MainFragment.infinitive.equals("conocer")) {
-                MainFragment.conjugationYo = "conozco";
+
                 MainFragment.conjugationTu = "conoces";
                 MainFragment.conjugationEl = "conoce";
                 MainFragment.conjugationNos = "conocemos";
@@ -58,7 +63,7 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "conocen";
                 MainFragment.setText();
             } else if (MainFragment.infinitive.equals("hacer")) {
-                MainFragment.conjugationYo = "hago";
+
                 MainFragment.conjugationTu = "haces";
                 MainFragment.conjugationEl = "hace";
                 MainFragment.conjugationNos = "hacemos";
@@ -66,7 +71,7 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "hacen";
                 MainFragment.setText();
             } else if (MainFragment.infinitive.equals("traer")) {
-                MainFragment.conjugationYo = "traigo";
+
                 MainFragment.conjugationTu = "traes";
                 MainFragment.conjugationEl = "trae";
                 MainFragment.conjugationNos = "traemos";
@@ -74,7 +79,7 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "traen";
                 MainFragment.setText();
             } else if (MainFragment.infinitive.equals("poner")) {
-                MainFragment.conjugationYo = "pongo";
+
                 MainFragment.conjugationTu = "pones";
                 MainFragment.conjugationEl = "pone";
                 MainFragment.conjugationNos = "ponemos";
@@ -90,7 +95,7 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "ven";
                 MainFragment.setText();
             } else if (MainFragment.infinitive.equals("salir")) {
-                MainFragment.conjugationYo = "salgo";
+
                 MainFragment.conjugationTu = "sales";
                 MainFragment.conjugationEl = "sale";
                 MainFragment.conjugationNos = "salemos";
@@ -98,7 +103,7 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "salen";
                 MainFragment.setText();
             } else if (MainFragment.infinitive.equals("conducir")) {
-                MainFragment.conjugationYo = "conduzco";
+
                 MainFragment.conjugationTu = "conduces";
                 MainFragment.conjugationEl = "conduce";
                 MainFragment.conjugationNos = "conducimos";
@@ -130,7 +135,7 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "quieren";
                 MainFragment.setText();
             } else if (MainFragment.infinitive.equals("tener")) {
-                MainFragment.conjugationYo = "tengo";
+
                 MainFragment.conjugationTu = "tienes";
                 MainFragment.conjugationEl = "tiene";
                 MainFragment.conjugationNos = "tenemos";
@@ -138,7 +143,7 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "tienen";
                 MainFragment.setText();
             } else if (MainFragment.infinitive.equals("decir")) {
-                MainFragment.conjugationYo = "digo";
+
                 MainFragment.conjugationTu = "dices";
                 MainFragment.conjugationEl = "dice";
                 MainFragment.conjugationNos = "dicemos";
@@ -146,7 +151,7 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "dicen";
                 MainFragment.setText();
             } else if (MainFragment.infinitive.equals("venir")) {
-                MainFragment.conjugationYo = "vengo";
+
                 MainFragment.conjugationTu = "vienes";
                 MainFragment.conjugationEl = "viene";
                 MainFragment.conjugationNos = "venimos";
@@ -467,6 +472,28 @@ public class IrregularVerb {
             } else {
                 MainFragment.conjugateVerbAffirmativeCommand();
             }
+        }
+    }
+
+    public static void conjugateIrregularYoVerb() {
+        if (MainFragment.infinitive.equals("hacer")) {
+            MainFragment.conjugationYo = "hago";
+        } else if (MainFragment.infinitive.equals("oír")) {
+            MainFragment.conjugationYo = "oigo";
+        } else if (MainFragment.infinitive.equals("traer")) {
+            MainFragment.conjugationYo = "traigo";
+        } else if (MainFragment.infinitive.equals("caer")) {
+            MainFragment.conjugationYo = "hago";
+        } else if (MainFragment.infinitive.equals("decir")) {
+            MainFragment.conjugationYo = "digo";
+        } else if (MainFragment.infinitive.equals("conducir")) {
+            MainFragment.conjugationYo = "conduzco";
+        } else if (MainFragment.infinitive.equals("conocer")) {
+            MainFragment.conjugationYo = "conozco";
+        } else {
+            MainFragment.conjugationYo = MainFragment.infinitive.replace("er", "");
+            MainFragment.conjugationYo = MainFragment.infinitive.replace("ir", "");
+            MainFragment.conjugationYo = MainFragment.infinitive + "go";
         }
     }
 }

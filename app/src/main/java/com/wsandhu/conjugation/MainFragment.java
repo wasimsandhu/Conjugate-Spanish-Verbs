@@ -25,16 +25,25 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     EditText mMainTextField;
     Button mConjugateButton;
 
-    public static boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb, hasStemChange, isYoGoVerb;
+    public static boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb, isIrregularYoVerb, hasStemChange;
+    boolean E2IE, O2UE, E2I;
 
     public static int verbTense;
 
     String[] irregularVerbs = {"ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
-            "ver", "salir", "conducir", "jugar", "haber", "poder", "querer", "tener", "venir", "decir"};
+            "ver", "salir", "conducir", "jugar", "haber", "poder", "querer", "venir", "decir"};
 
-    // TODO Fill in these arrays and utilize them for imperative methods
-    String[] stemChangingVerbs = {};
-    String[] yoGoVerbs = {};
+    String[] irregularYoVerbs = {"tener", "venir", "salir", "poner", "caer", "traer", "oír", "hacer", "decir",
+            "conducir", "conocer"};
+
+    String[] stemChangingVerbsIE = {"cerrar", "comenzar", "despertar", "divertirse", "empezar",
+            "encender", "entender", "sentir", "mentir", "negar", "nevar", "pensar", "perder", "preferir",
+            "recomendar", "sentarse", "querer"};
+
+    String[] stemChangingVerbsUE = {"almorzar", "aprobar", "contar", "costar", "doler", "dormir", "encontrar",
+            "jugar", "llover", "morir", "poder", "probar", "recordar", "soñar", "volar"};
+
+    String[] stemChangingVerbsI = {"conseguir", "corregir", "elegir", "repetir", "seguir", "servir", "vestirse"};
 
     public MainFragment() {
 
@@ -72,73 +81,82 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
             public void onClick(View v) {
                 conjugate();
             }
-
-            protected void conjugate() {
-                // The string "infinitive" is whatever the user types in the text field
-                infinitive = mMainTextField.getText().toString();
-
-                // booleans for checking verb type
-                isEndingAr = infinitive.endsWith("ar");
-                isEndingEr = infinitive.endsWith("er");
-                isEndingIr = infinitive.endsWith("ir");
-                isIrregularVerb = Arrays.asList(irregularVerbs).contains(infinitive);
-
-                // Check to see what kind of verb it is before conjugating
-                if (isEndingAr && !isIrregularVerb) {
-                    // checks verb tense and then calls respective method
-                    if (verbTense == 0) {
-                        conjugateArVerbPresent();
-                    } else if (verbTense == 1) {
-                        conjugateArVerbPreterite();
-                    } else if (verbTense == 2) {
-                        conjugateArVerbImperfect();
-                    } else if (verbTense == 3) {
-                        conjugateVerbFuture();
-                    } else if (verbTense == 4) {
-                        conjugateVerbAffirmativeCommand();
-                    } else if (verbTense == 5) {
-                        conjugateVerbNegativeCommand();
-                    }
-                } else if (isEndingEr && !isIrregularVerb) {
-                    // checks verb tense and then calls respective method
-                    if (verbTense == 0) {
-                        conjugateErVerbPresent();
-                    } else if (verbTense == 1) {
-                        conjugateErIrVerbPreterite();
-                    } else if (verbTense == 2) {
-                        conjugateErIrVerbImperfect();
-                    } else if (verbTense == 3) {
-                        conjugateVerbFuture();
-                    } else if (verbTense == 4) {
-                        conjugateVerbAffirmativeCommand();
-                    } else if (verbTense == 5) {
-                        conjugateVerbNegativeCommand();
-                    }
-                } else if (isEndingIr && !isIrregularVerb) {
-                    // checks verb tense and then calls respective method
-                    if (verbTense == 0) {
-                        conjugateIrVerbPresent();
-                    } else if (verbTense == 1) {
-                        conjugateErIrVerbPreterite();
-                    } else if (verbTense == 2) {
-                        conjugateErIrVerbImperfect();
-                    } else if (verbTense == 3) {
-                        conjugateVerbFuture();
-                    } else if (verbTense == 4) {
-                        conjugateVerbAffirmativeCommand();
-                    } else if (verbTense == 5) {
-                        conjugateVerbNegativeCommand();
-                    }
-                } else if (isIrregularVerb) {
-                    IrregularVerb.conjugate();
-                } else {
-                    Toast toast = Toast.makeText(getActivity(), "No puedo conjugar eso. ¡Lo siento! ", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
         });
-
         return rootView;
+    }
+
+    protected void conjugate() {
+        // The string "infinitive" is whatever the user types in the text field
+        infinitive = mMainTextField.getText().toString();
+
+        // booleans for checking verb type
+        isEndingAr = infinitive.endsWith("ar");
+        isEndingEr = infinitive.endsWith("er");
+        isEndingIr = infinitive.endsWith("ir");
+        isIrregularVerb = Arrays.asList(irregularVerbs).contains(infinitive);
+        isIrregularYoVerb = Arrays.asList(irregularYoVerbs).contains(infinitive);
+
+        // Booleans for checking stem change before conjugation
+        E2IE = Arrays.asList(stemChangingVerbsIE).contains(infinitive);
+        O2UE = Arrays.asList(stemChangingVerbsUE).contains(infinitive);
+        E2I = Arrays.asList(stemChangingVerbsI).contains(infinitive);
+
+        if (E2IE || O2UE || E2I) { hasStemChange = true; }
+
+        if (hasStemChange) { stemChangeConjugation(); }
+
+        // Check to see what kind of verb it is before conjugating
+        if (isEndingAr && !isIrregularVerb) {
+            // checks verb tense and then calls respective method
+            if (verbTense == 0) {
+                conjugateArVerbPresent();
+            } else if (verbTense == 1) {
+                conjugateArVerbPreterite();
+            } else if (verbTense == 2) {
+                conjugateArVerbImperfect();
+            } else if (verbTense == 3) {
+                conjugateVerbFuture();
+            } else if (verbTense == 4) {
+                conjugateVerbAffirmativeCommand();
+            } else if (verbTense == 5) {
+                conjugateVerbNegativeCommand();
+            }
+        } else if (isEndingEr && !isIrregularVerb) {
+            // checks verb tense and then calls respective method
+            if (verbTense == 0) {
+                conjugateErVerbPresent();
+            } else if (verbTense == 1) {
+                conjugateErIrVerbPreterite();
+            } else if (verbTense == 2) {
+                conjugateErIrVerbImperfect();
+            } else if (verbTense == 3) {
+                conjugateVerbFuture();
+            } else if (verbTense == 4) {
+                conjugateVerbAffirmativeCommand();
+            } else if (verbTense == 5) {
+                conjugateVerbNegativeCommand();
+            }
+        } else if (isEndingIr && !isIrregularVerb) {
+            // checks verb tense and then calls respective method
+            if (verbTense == 0) {
+                conjugateIrVerbPresent();
+            } else if (verbTense == 1) {
+                conjugateErIrVerbPreterite();
+            } else if (verbTense == 2) {
+                conjugateErIrVerbImperfect();
+            } else if (verbTense == 3) {
+                conjugateVerbFuture();
+            } else if (verbTense == 4) {
+                conjugateVerbAffirmativeCommand();
+            } else if (verbTense == 5) {
+                conjugateVerbNegativeCommand();
+            }
+        } else if (isIrregularVerb) {
+            IrregularVerb.conjugate();
+        } else {
+            Toast toast = Toast.makeText(getActivity(), "No puedo conjugar eso.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     /* METHODS FOR PRESENT TENSE CONJUGATIONS */
@@ -343,7 +361,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         setText();
     }
 
-    // Sets the text of these placeholder text views to the conjugation
+    // Sets and clears the text of these placeholder text views to the conjugation
     public static void setText() {
         mYoTextView.setText(conjugationYo);
         mTuTextView.setText(conjugationTu);
@@ -360,6 +378,32 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         mNosTextView.setText(" ");
         mOsTextView.setText(" ");
         mEllosTextView.setText(" ");
+    }
+
+    public void stemChangeConjugation() {
+        int index;
+
+        if (E2IE) {
+            // finds "e" and changes to stem "ie"
+            index = infinitive.indexOf("e");
+            StringBuilder sb = new StringBuilder(infinitive);
+            sb = sb.replace(index, index + 1, "ie");
+            infinitive = sb.toString();
+        } else if (O2UE) {
+            // finds "o" and changes to stem "ue"
+            index = infinitive.indexOf("e");
+            StringBuilder sb = new StringBuilder(infinitive);
+            sb = sb.replace(index, index + 1, "ue");
+            infinitive = sb.toString();
+        } else if (E2I) {
+            // finds "e" and changes to stem "i"
+            index = infinitive.indexOf("e");
+            StringBuilder sb = new StringBuilder(infinitive);
+            sb = sb.replace(index, index + 1, "i");
+            infinitive = sb.toString();
+        } else {
+
+        }
     }
 
     @Override
