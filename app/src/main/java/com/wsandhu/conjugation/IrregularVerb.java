@@ -7,13 +7,13 @@ public class IrregularVerb {
 
     public static void conjugate() {
 
-        // Irregular yo endings
-        if (MainFragment.isIrregularYoVerb) {
-            conjugateIrregularYoVerb();
-        }
-
         // Present tense irregular verbs
         if (MainFragment.verbTense == 0) {
+            // Irregular yo endings
+            if (MainFragment.isIrregularYoVerb) {
+                conjugateIrregularYoVerb();
+            }
+
             if (MainFragment.infinitive.equals("ir")) {
                 MainFragment.conjugationYo = "voy";
                 MainFragment.conjugationTu = "vas";
@@ -483,17 +483,17 @@ public class IrregularVerb {
         } else if (MainFragment.infinitive.equals("traer")) {
             MainFragment.conjugationYo = "traigo";
         } else if (MainFragment.infinitive.equals("caer")) {
-            MainFragment.conjugationYo = "hago";
+            MainFragment.conjugationYo = "caigo";
         } else if (MainFragment.infinitive.equals("decir")) {
             MainFragment.conjugationYo = "digo";
         } else if (MainFragment.infinitive.equals("conducir")) {
             MainFragment.conjugationYo = "conduzco";
         } else if (MainFragment.infinitive.equals("conocer")) {
             MainFragment.conjugationYo = "conozco";
-        } else {
-            MainFragment.conjugationYo = MainFragment.infinitive.replace("er", "");
-            MainFragment.conjugationYo = MainFragment.infinitive.replace("ir", "");
-            MainFragment.conjugationYo = MainFragment.infinitive + "go";
+        } else if (MainFragment.isEndingEr) {
+            MainFragment.conjugationYo = MainFragment.infinitive.replace("er", "go");
+        } else if (MainFragment.isEndingIr) {
+            MainFragment.conjugationYo = MainFragment.infinitive.replace("ir", "go");
         }
     }
 }

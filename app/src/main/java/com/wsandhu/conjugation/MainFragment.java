@@ -31,7 +31,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     public static int verbTense;
 
     String[] irregularVerbs = {"ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
-            "ver", "salir", "conducir", "jugar", "haber", "poder", "querer", "venir", "decir"};
+            "ver", "salir", "conducir", "jugar", "haber", "poder", "querer", "venir", "decir", "tener"};
 
     String[] irregularYoVerbs = {"tener", "venir", "salir", "poner", "caer", "traer", "oír", "hacer", "decir",
             "conducir", "conocer"};
@@ -101,14 +101,16 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         O2UE = Arrays.asList(stemChangingVerbsUE).contains(infinitive);
         E2I = Arrays.asList(stemChangingVerbsI).contains(infinitive);
 
-        if (E2IE || O2UE || E2I) { hasStemChange = true; }
-
-        if (hasStemChange) { stemChangeConjugation(); }
+        if (E2IE) { hasStemChange = true; }
+        if (O2UE) { hasStemChange = true; }
+        if (E2I) { hasStemChange = true; }
 
         // Check to see what kind of verb it is before conjugating
         if (isEndingAr && !isIrregularVerb) {
             // checks verb tense and then calls respective method
             if (verbTense == 0) {
+                // checks for stem change in present tense
+                if (hasStemChange) { stemChangeConjugation(); }
                 conjugateArVerbPresent();
             } else if (verbTense == 1) {
                 conjugateArVerbPreterite();
@@ -124,6 +126,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         } else if (isEndingEr && !isIrregularVerb) {
             // checks verb tense and then calls respective method
             if (verbTense == 0) {
+                // checks for stem change in present tense
+                if (hasStemChange) { stemChangeConjugation(); }
                 conjugateErVerbPresent();
             } else if (verbTense == 1) {
                 conjugateErIrVerbPreterite();
@@ -139,6 +143,8 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         } else if (isEndingIr && !isIrregularVerb) {
             // checks verb tense and then calls respective method
             if (verbTense == 0) {
+                // checks for stem change in present tense
+                if (hasStemChange) { stemChangeConjugation(); }
                 conjugateIrVerbPresent();
             } else if (verbTense == 1) {
                 conjugateErIrVerbPreterite();
@@ -391,7 +397,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
             infinitive = sb.toString();
         } else if (O2UE) {
             // finds "o" and changes to stem "ue"
-            index = infinitive.indexOf("e");
+            index = infinitive.indexOf("o");
             StringBuilder sb = new StringBuilder(infinitive);
             sb = sb.replace(index, index + 1, "ue");
             infinitive = sb.toString();
