@@ -19,6 +19,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     public static String infinitive;
     public static String conjugationYo, conjugationTu, conjugationEl, conjugationNos, conjugationOs, conjugationEllos;
+    String stemChangedVerb;
 
     public static TextView mYoTextView, mTuTextView, mElTextView, mNosTextView, mOsTextView, mEllosTextView;
     Spinner mConjugationTypeSpinner;
@@ -110,7 +111,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
             // checks verb tense and then calls respective method
             if (verbTense == 0) {
                 // checks for stem change in present tense
-                if (hasStemChange) { stemChangeConjugation(); }
+                if (hasStemChange) { stemChange(); }
                 conjugateArVerbPresent();
             } else if (verbTense == 1) {
                 conjugateArVerbPreterite();
@@ -127,7 +128,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
             // checks verb tense and then calls respective method
             if (verbTense == 0) {
                 // checks for stem change in present tense
-                if (hasStemChange) { stemChangeConjugation(); }
+                if (hasStemChange) { stemChange(); }
                 conjugateErVerbPresent();
             } else if (verbTense == 1) {
                 conjugateErIrVerbPreterite();
@@ -144,7 +145,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
             // checks verb tense and then calls respective method
             if (verbTense == 0) {
                 // checks for stem change in present tense
-                if (hasStemChange) { stemChangeConjugation(); }
+                if (hasStemChange) { stemChange(); }
                 conjugateIrVerbPresent();
             } else if (verbTense == 1) {
                 conjugateErIrVerbPreterite();
@@ -169,12 +170,22 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     public void conjugateArVerbPresent() {
 
         // replaces the ending in the -ar infinitive with present tense ending
-        conjugationYo = infinitive.replace("ar", "o");
-        conjugationTu = infinitive.replace("ar", "as");
-        conjugationEl = infinitive.replace("ar", "a");
-        conjugationNos = infinitive.replace("ar", "amos");
-        conjugationOs = infinitive.replace("ar", "aís");
-        conjugationEllos = infinitive.replace("ar", "an");
+        if (!hasStemChange) {
+            conjugationYo = infinitive.replace("ar", "o");
+            conjugationTu = infinitive.replace("ar", "as");
+            conjugationEl = infinitive.replace("ar", "a");
+            conjugationNos = infinitive.replace("ar", "amos");
+            conjugationOs = infinitive.replace("ar", "aís");
+            conjugationEllos = infinitive.replace("ar", "an");
+        } else {
+            // stem change conjugations
+            conjugationYo = stemChangedVerb.replace("ar", "o");
+            conjugationTu = stemChangedVerb.replace("ar", "as");
+            conjugationEl = stemChangedVerb.replace("ar", "a");
+            conjugationNos = infinitive.replace("ar", "amos"); // stem doesn't change
+            conjugationOs = infinitive.replace("ar", "aís"); // stem doesn't change
+            conjugationEllos = stemChangedVerb.replace("ar", "an");
+        }
 
         setText();
 
@@ -182,12 +193,23 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     public void conjugateErVerbPresent() {
 
-        conjugationYo = infinitive.replace("er", "o");
-        conjugationTu = infinitive.replace("er", "es");
-        conjugationEl = infinitive.replace("er", "e");
-        conjugationNos = infinitive.replace("er", "emos");
-        conjugationOs = infinitive.replace("er", "eís");
-        conjugationEllos = infinitive.replace("er", "en");
+        // replaces the ending in the -er infinitive with present tense ending
+        if (!hasStemChange) {
+            conjugationYo = infinitive.replace("er", "o");
+            conjugationTu = infinitive.replace("er", "es");
+            conjugationEl = infinitive.replace("er", "e");
+            conjugationNos = infinitive.replace("er", "emos");
+            conjugationOs = infinitive.replace("er", "eís");
+            conjugationEllos = infinitive.replace("er", "en");
+        } else {
+            // stem change conjugations
+            conjugationYo = stemChangedVerb.replace("er", "o");
+            conjugationTu = stemChangedVerb.replace("er", "es");
+            conjugationEl = stemChangedVerb.replace("er", "e");
+            conjugationNos = infinitive.replace("er", "emos"); // stem doesn't change
+            conjugationOs = infinitive.replace("er", "eís"); // stem doesn't change
+            conjugationEllos = stemChangedVerb.replace("er", "en");
+            }
 
         setText();
 
@@ -195,13 +217,23 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
 
     public void conjugateIrVerbPresent() {
 
-        conjugationYo = infinitive.replace("ir", "o");
-        conjugationTu = infinitive.replace("ir", "es");
-        conjugationEl = infinitive.replace("ir", "e");
-        conjugationNos = infinitive.replace("ir", "imos");
-        conjugationOs = infinitive.replace("ir", "ís");
-        conjugationEllos = infinitive.replace("ir", "en");
-
+        // replaces the ending in the -ir infinitive with present tense ending
+        if (!hasStemChange) {
+            conjugationYo = infinitive.replace("ir", "o");
+            conjugationTu = infinitive.replace("ir", "es");
+            conjugationEl = infinitive.replace("ir", "e");
+            conjugationNos = infinitive.replace("ir", "imos");
+            conjugationOs = infinitive.replace("ir", "ís");
+            conjugationEllos = infinitive.replace("ir", "en");
+        } else {
+            // stem change conjugations
+            conjugationYo = stemChangedVerb.replace("ir", "o");
+            conjugationTu = stemChangedVerb.replace("ir", "es");
+            conjugationEl = stemChangedVerb.replace("ir", "e");
+            conjugationNos = infinitive.replace("ir", "imos"); // stem doesn't change
+            conjugationOs = infinitive.replace("ir", "ís"); // stem doesn't change
+            conjugationEllos = stemChangedVerb.replace("ir", "en");
+        }
         setText();
 
     }
@@ -386,27 +418,30 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         mEllosTextView.setText(" ");
     }
 
-    public void stemChangeConjugation() {
+    public void stemChange() {
         int index;
+        // another string that equals the value of "infinitive",
+        // string is stem-changed in the conditional below
+        stemChangedVerb = infinitive;
 
         if (E2IE) {
             // finds "e" and changes to stem "ie"
-            index = infinitive.indexOf("e");
-            StringBuilder sb = new StringBuilder(infinitive);
+            index = stemChangedVerb.indexOf("e");
+            StringBuilder sb = new StringBuilder(stemChangedVerb);
             sb = sb.replace(index, index + 1, "ie");
-            infinitive = sb.toString();
+            stemChangedVerb = sb.toString();
         } else if (O2UE) {
             // finds "o" and changes to stem "ue"
-            index = infinitive.indexOf("o");
-            StringBuilder sb = new StringBuilder(infinitive);
+            index = stemChangedVerb.indexOf("o");
+            StringBuilder sb = new StringBuilder(stemChangedVerb);
             sb = sb.replace(index, index + 1, "ue");
-            infinitive = sb.toString();
+            stemChangedVerb = sb.toString();
         } else if (E2I) {
             // finds "e" and changes to stem "i"
-            index = infinitive.indexOf("e");
-            StringBuilder sb = new StringBuilder(infinitive);
+            index = stemChangedVerb.indexOf("e");
+            StringBuilder sb = new StringBuilder(stemChangedVerb);
             sb = sb.replace(index, index + 1, "i");
-            infinitive = sb.toString();
+            stemChangedVerb = sb.toString();
         } else {
 
         }
