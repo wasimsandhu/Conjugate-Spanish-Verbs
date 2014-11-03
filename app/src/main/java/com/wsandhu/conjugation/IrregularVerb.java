@@ -110,14 +110,6 @@ public class IrregularVerb {
                 MainFragment.conjugationOs = "conducís";
                 MainFragment.conjugationEllos = "conducen";
                 MainFragment.setText();
-            } else if (MainFragment.infinitive.equals("jugar")) {
-                MainFragment.conjugationYo = "juego";
-                MainFragment.conjugationTu = "juegas";
-                MainFragment.conjugationEl = "juega";
-                MainFragment.conjugationNos = "jugamos";
-                MainFragment.conjugationOs = "jugáis";
-                MainFragment.conjugationEllos = "juegan";
-                MainFragment.setText();
             } else if (MainFragment.infinitive.equals("poder")) {
                 MainFragment.conjugationYo = "puedo";
                 MainFragment.conjugationTu = "puedes";
@@ -469,8 +461,6 @@ public class IrregularVerb {
                 MainFragment.conjugationNos = "estemos";
                 MainFragment.conjugationEllos = "estén";
                 MainFragment.setText();
-            } else {
-                MainFragment.conjugateVerbAffirmativeCommand();
             }
         }
     }

@@ -32,7 +32,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     public static int verbTense;
 
     String[] irregularVerbs = {"ir", "ser", "estar", "dar", "saber", "conocer", "hacer", "traer", "poner",
-            "ver", "salir", "conducir", "jugar", "haber", "poder", "querer", "venir", "decir", "tener"};
+            "ver", "salir", "conducir", "haber", "poder", "querer", "venir", "decir", "tener"};
 
     String[] irregularYoVerbs = {"tener", "venir", "salir", "poner", "caer", "traer", "oír", "hacer", "decir",
             "conducir", "conocer"};
@@ -120,8 +120,12 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
             } else if (verbTense == 3) {
                 conjugateVerbFuture();
             } else if (verbTense == 4) {
+                if (hasStemChange) { stemChange(); }
+                conjugateArVerbPresent();
                 conjugateVerbAffirmativeCommand();
             } else if (verbTense == 5) {
+                if (hasStemChange) { stemChange(); }
+                conjugateArVerbPresent();
                 conjugateVerbNegativeCommand();
             }
         } else if (isEndingEr && !isIrregularVerb) {
@@ -137,8 +141,12 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
             } else if (verbTense == 3) {
                 conjugateVerbFuture();
             } else if (verbTense == 4) {
+                if (hasStemChange) { stemChange(); }
+                conjugateErVerbPresent();
                 conjugateVerbAffirmativeCommand();
             } else if (verbTense == 5) {
+                if (hasStemChange) { stemChange(); }
+                conjugateErVerbPresent();
                 conjugateVerbNegativeCommand();
             }
         } else if (isEndingIr && !isIrregularVerb) {
@@ -154,8 +162,12 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
             } else if (verbTense == 3) {
                 conjugateVerbFuture();
             } else if (verbTense == 4) {
+                if (hasStemChange) { stemChange(); }
+                conjugateIrVerbPresent();
                 conjugateVerbAffirmativeCommand();
             } else if (verbTense == 5) {
+                if (hasStemChange) { stemChange(); }
+                conjugateIrVerbPresent();
                 conjugateVerbNegativeCommand();
             }
         } else if (isIrregularVerb) {
@@ -314,87 +326,55 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
     }
 
     /* METHODS FOR IMPERATIVE TENSE CONJUGATION */
-    public static void conjugateVerbAffirmativeCommand() {
+    public void conjugateVerbAffirmativeCommand() {
+
         conjugationYo = " ";
 
-        // Tú commands are just present tense el/ella/usted
         if (isEndingAr) {
-            conjugationTu = infinitive.replace("ar", "a");
-        } else if (isEndingEr) {
-            conjugationTu = infinitive.replace("er", "e");
-        } else if (isEndingIr) {
-            conjugationTu = infinitive.replace("er", "e");
-        }
-
-        // Usted commands use "opposite" endings
-        if (isEndingAr) {
-            conjugationEl = infinitive.replace("ar", "e");
-        } else if (isEndingEr) {
-            conjugationEl = infinitive.replace("er", "a");
-        } else if (isEndingIr) {
-            conjugationEl = infinitive.replace("ir", "a");
-        }
-
-        // Nosotros commands
-        if (isEndingAr) {
+            conjugationTu = stemChangedVerb.replace("ar", "a");
+            conjugationEl = stemChangedVerb.replace("ar", "e");
             conjugationNos = infinitive.replace("ar", "emos");
+            conjugationEllos = stemChangedVerb.replace("ar", "en");
         } else if (isEndingEr) {
+            conjugationTu = stemChangedVerb.replace("er", "e");
+            conjugationEl = stemChangedVerb.replace("er", "a");
             conjugationNos = infinitive.replace("er", "amos");
+            conjugationEllos = stemChangedVerb.replace("er", "an");
         } else if (isEndingIr) {
+            conjugationTu = stemChangedVerb.replace("ir", "e");
+            conjugationEl = stemChangedVerb.replace("ir", "a");
             conjugationNos = infinitive.replace("ir", "amos");
+            conjugationEllos = stemChangedVerb.replace("ir", "an");
         }
 
         conjugationOs = " ";
-        if (isEndingAr) {
-            conjugationEllos = infinitive.replace("ar", "en");
-        } else if (isEndingEr) {
-            conjugationEllos = infinitive.replace("er", "an");
-        } else if (isEndingIr) {
-            conjugationEllos = infinitive.replace("ir", "an");
-        }
 
         setText();
     }
 
-    public static void conjugateVerbNegativeCommand() {
-        // TODO Figure this out
+    public void conjugateVerbNegativeCommand() {
+
         conjugationYo = " ";
 
         // Tú commands are just present tense el/ella/usted
         if (isEndingAr) {
-            conjugationTu = "no " + infinitive.replace("ar", "es");
-        } else if (isEndingEr) {
-            conjugationTu = "no " + infinitive.replace("er", "as");
-        } else if (isEndingIr) {
-            conjugationTu = "no " + infinitive.replace("er", "as");
-        }
-
-        // Usted commands use "opposite" endings
-        if (isEndingAr) {
-            conjugationEl = "no " + infinitive.replace("ar", "e");
-        } else if (isEndingEr) {
-            conjugationEl = "no " + infinitive.replace("er", "a");
-        } else if (isEndingIr) {
-            conjugationEl = "no " + infinitive.replace("ir", "a");
-        }
-
-        // Nosotros commands
-        if (isEndingAr) {
+            conjugationTu = "no " + stemChangedVerb.replace("ar", "es");
+            conjugationEl = "no " + stemChangedVerb.replace("ar", "e");
             conjugationNos = "no " + infinitive.replace("ar", "emos");
+            conjugationEllos = "no " + stemChangedVerb.replace("ar", "en");
         } else if (isEndingEr) {
+            conjugationTu = "no " + stemChangedVerb.replace("er", "as");
+            conjugationEl = "no " + stemChangedVerb.replace("er", "a");
             conjugationNos = "no " + infinitive.replace("er", "amos");
+            conjugationEllos = "no " + stemChangedVerb.replace("er", "an");
         } else if (isEndingIr) {
+            conjugationTu = "no " + stemChangedVerb.replace("ir", "as");
+            conjugationEl = "no " + stemChangedVerb.replace("ir", "a");
             conjugationNos = "no " + infinitive.replace("ir", "amos");
+            conjugationEllos = "no " + stemChangedVerb.replace("ir", "an");
         }
 
         conjugationOs = " ";
-        if (isEndingAr) {
-            conjugationEllos = "no " + infinitive.replace("ar", "en");
-        } else if (isEndingEr) {
-            conjugationEllos = "no " + infinitive.replace("er", "an");
-        } else if (isEndingIr) {
-            conjugationEllos = "no " + infinitive.replace("ir", "an");
-        }
 
         setText();
     }
@@ -418,7 +398,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemSelected
         mEllosTextView.setText(" ");
     }
 
-    public void stemChange() {
+    private void stemChange() {
         int index;
         // another string that equals the value of "infinitive",
         // string is stem-changed in the conditional below
