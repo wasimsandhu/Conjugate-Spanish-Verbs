@@ -6,9 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <!-- For activities and fragments -->
-    <string name="present_form_activity">Present Tense Conjugation</string>
-
     <!-- Conjugation labels -->
     <string name="yo">Yo: </string>
     <string name="tu">Tú: </string>
@@ -18,16 +15,16 @@
     <string name="ellos">Ellos/ellas/ustedes: </string>
 
     <string-array name="conjugation_types">
-        <item>Present</item>
-        <item>Preterite</item>
-        <item>Imperfect</item>
-        <item>Future</item>
+        <item>Present Tense</item>
+        <item>Preterite Tense</item>
+        <item>Imperfect Tense</item>
+        <item>Future Tense</item>
         <item>Affirmative Command</item>
         <item>Negative Command</item>
-        <item>Present Subjunctive</item>
-        <item>Imperfect Subjunctive</item>
-        <item>Past Participle</item>
-        <item>Gerund</item>
+        <item>Present Subjunctive Tense</item>
+        <item>Imperfect Subjunctive Tense</item>
+        <item>Past Participle Tense</item>
+        <item>Gerund Form</item>
     </string-array>
 
 </resources>
