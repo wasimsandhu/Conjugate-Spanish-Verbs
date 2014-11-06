@@ -461,6 +461,107 @@ public class IrregularVerb {
                 MainFragment.conjugationNos = "estemos";
                 MainFragment.conjugationEllos = "estén";
                 MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("dar")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "da";
+                MainFragment.conjugationEl = "dé";
+                MainFragment.conjugationNos = "demos";
+                MainFragment.conjugationEllos = "den";
+                MainFragment.setText();
+            }
+            // Negative commands
+        } else if (MainFragment.verbTense == 5) {
+            if (MainFragment.infinitive.equals("decir")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no digas";
+                MainFragment.conjugationEl = "no diga";
+                MainFragment.conjugationNos = "no digamos";
+                MainFragment.conjugationEllos = "no digan";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("hacer")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no haz";
+                MainFragment.conjugationEl = "no haga";
+                MainFragment.conjugationNos = "no hagamos";
+                MainFragment.conjugationEllos = "no hagan";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("ir")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no vayas";
+                MainFragment.conjugationEl = "no vaya";
+                MainFragment.conjugationNos = "no vayamos";
+                MainFragment.conjugationEllos = "no vayan";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("poner")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no pongas";
+                MainFragment.conjugationEl = "no ponga";
+                MainFragment.conjugationNos = "no pongamos";
+                MainFragment.conjugationEllos = "no pongan";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("salir")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no salgas";
+                MainFragment.conjugationEl = "no salga";
+                MainFragment.conjugationNos = "no salgamos";
+                MainFragment.conjugationEllos = "no salgan";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("ser")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no seas";
+                MainFragment.conjugationEl = "no sea";
+                MainFragment.conjugationNos = "no seamos";
+                MainFragment.conjugationEllos = "no sean";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("tener")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no tengas";
+                MainFragment.conjugationEl = "no tenga";
+                MainFragment.conjugationNos = "no tengamos";
+                MainFragment.conjugationEllos = "no tengan";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("venir")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no vengas";
+                MainFragment.conjugationEl = "no venga";
+                MainFragment.conjugationNos = "no vengamos";
+                MainFragment.conjugationEllos = "no vengan";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("jugar")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no jueges";
+                MainFragment.conjugationEl = "no juege";
+                MainFragment.conjugationNos = "no jueguemos";
+                MainFragment.conjugationEllos = "no juegen";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("querer")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no quieras";
+                MainFragment.conjugationEl = "no quiera";
+                MainFragment.conjugationNos = "no quieramos";
+                MainFragment.conjugationEllos = "no quieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("conducir")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no conduczas";
+                MainFragment.conjugationEl = "no conduzca";
+                MainFragment.conjugationNos = "no conduzcamos";
+                MainFragment.conjugationEllos = "no conduzcan";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("estar")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no estés";
+                MainFragment.conjugationEl = "no esté";
+                MainFragment.conjugationNos = "no estemos";
+                MainFragment.conjugationEllos = "no estén";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("dar")) {
+                MainFragment.clearText();
+                MainFragment.conjugationTu = "no des";
+                MainFragment.conjugationEl = "no dé";
+                MainFragment.conjugationNos = "no demos";
+                MainFragment.conjugationEllos = "no den";
+                MainFragment.setText();
             }
         }
     }
