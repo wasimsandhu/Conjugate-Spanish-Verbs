@@ -1,5 +1,7 @@
 package com.wsandhu.conjugation;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
@@ -44,7 +46,19 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.action_bugreport) {
+            sendBugReport();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void sendBugReport() {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, "sandhuwasim@gmail.com");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Conjugation: Bug Report");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "I just found a bug in your app. Here's the problem: ");
+        emailIntent.setData(Uri.parse("mailto:" + "sandhuwasim@gmail.com"));
+        startActivity(Intent.createChooser(emailIntent, "Send Email to Developer"));
     }
 }
