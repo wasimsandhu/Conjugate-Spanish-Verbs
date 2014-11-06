@@ -126,6 +126,8 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
                 if (hasStemChange) { stemChange(); }
                 conjugateArVerbPresent();
                 conjugateVerbNegativeCommand();
+            } else if (verbTense == 6) {
+                conjugatePresentSubjunctive();
             }
         } else if (isEndingEr && !isIrregularVerb) {
             // checks verb tense and then calls respective method
@@ -147,6 +149,8 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
                 if (hasStemChange) { stemChange(); }
                 conjugateErVerbPresent();
                 conjugateVerbNegativeCommand();
+            } else if (verbTense == 6) {
+                conjugatePresentSubjunctive();
             }
         } else if (isEndingIr && !isIrregularVerb) {
             // checks verb tense and then calls respective method
@@ -168,6 +172,8 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
                 if (hasStemChange) { stemChange(); }
                 conjugateIrVerbPresent();
                 conjugateVerbNegativeCommand();
+            } else if (verbTense == 6) {
+                conjugatePresentSubjunctive();
             }
         } else if (isIrregularVerb) {
             IrregularVerb.conjugate();
@@ -420,8 +426,8 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         setText();
     }
 
-    public void conjugateSubjunctive() {
-
+    public void conjugatePresentSubjunctive() {
+        // TODO This meth
     }
 
     // Sets and clears the text of these placeholder text views to the conjugation
