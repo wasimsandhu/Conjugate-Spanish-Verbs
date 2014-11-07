@@ -120,13 +120,12 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
                 conjugateVerbFuture();
             } else if (verbTense == 4) {
                 if (hasStemChange) { stemChange(); }
-                conjugateArVerbPresent();
                 conjugateVerbAffirmativeCommand();
             } else if (verbTense == 5) {
                 if (hasStemChange) { stemChange(); }
-                conjugateArVerbPresent();
                 conjugateVerbNegativeCommand();
             } else if (verbTense == 6) {
+                if (hasStemChange) { stemChange(); }
                 conjugatePresentSubjunctive();
             }
         } else if (isEndingEr && !isIrregularVerb) {
@@ -143,13 +142,12 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
                 conjugateVerbFuture();
             } else if (verbTense == 4) {
                 if (hasStemChange) { stemChange(); }
-                conjugateErVerbPresent();
                 conjugateVerbAffirmativeCommand();
             } else if (verbTense == 5) {
                 if (hasStemChange) { stemChange(); }
-                conjugateErVerbPresent();
                 conjugateVerbNegativeCommand();
             } else if (verbTense == 6) {
+                if (hasStemChange) { stemChange(); }
                 conjugatePresentSubjunctive();
             }
         } else if (isEndingIr && !isIrregularVerb) {
@@ -166,19 +164,18 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
                 conjugateVerbFuture();
             } else if (verbTense == 4) {
                 if (hasStemChange) { stemChange(); }
-                conjugateIrVerbPresent();
                 conjugateVerbAffirmativeCommand();
             } else if (verbTense == 5) {
                 if (hasStemChange) { stemChange(); }
-                conjugateIrVerbPresent();
                 conjugateVerbNegativeCommand();
             } else if (verbTense == 6) {
+                if (hasStemChange) { stemChange(); }
                 conjugatePresentSubjunctive();
             }
         } else if (isIrregularVerb) {
             IrregularVerb.conjugate();
         } else {
-            Toast toast = Toast.makeText(getActivity(), "No puedo conjugar eso.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(getActivity(), "Cannot conjugate verb", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
@@ -355,7 +352,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
                 conjugationTu = infinitive.replace("er", "e");
                 conjugationEl = infinitive.replace("er", "a");
                 conjugationNos = infinitive.replace("er", "amos");
-                conjugationEllos = infinitive.replace("o", "an");
+                conjugationEllos = infinitive.replace("er", "an");
             }
         } else if (isEndingIr) {
             if (hasStemChange) {
@@ -427,7 +424,59 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
     }
 
     public void conjugatePresentSubjunctive() {
-        // TODO This meth
+
+        // TODO spelling change of -car, -gar, -zar verbs
+        if (isEndingAr) {
+            if (hasStemChange) {
+                conjugationYo = stemChangedVerb.replace("ar", "e");
+                conjugationTu = stemChangedVerb.replace("ar", "es");
+                conjugationEl = stemChangedVerb.replace("ar", "e");
+                conjugationNos = infinitive.replace("ar", "emos");
+                conjugationOs = infinitive.replace("ar", "éis");
+                conjugationEllos = stemChangedVerb.replace("ar", "en");
+            } else {
+                conjugationYo = infinitive.replace("ar", "e");
+                conjugationTu = infinitive.replace("ar", "es");
+                conjugationEl = infinitive.replace("ar", "e");
+                conjugationNos = infinitive.replace("ar", "emos");
+                conjugationOs = infinitive.replace("ar", "éis");
+                conjugationEllos = infinitive.replace("ar", "en");
+            }
+        } else if (isEndingEr) {
+            if (hasStemChange) {
+                conjugationYo = stemChangedVerb.replace("er", "a");
+                conjugationTu = stemChangedVerb.replace("er", "as");
+                conjugationEl = stemChangedVerb.replace("er", "a");
+                conjugationNos = infinitive.replace("er", "amos");
+                conjugationOs = infinitive.replace("er", "áis");
+                conjugationEllos = stemChangedVerb.replace("o", "an");
+            } else {
+                conjugationYo = infinitive.replace("er", "a");
+                conjugationTu = infinitive.replace("er", "as");
+                conjugationEl = infinitive.replace("er", "a");
+                conjugationNos = infinitive.replace("er", "amos");
+                conjugationOs = infinitive.replace("er", "áis");
+                conjugationEllos = infinitive.replace("er", "an");
+            }
+        } else if (isEndingIr) {
+            if (hasStemChange) {
+                conjugationYo = stemChangedVerb.replace("ir", "a");
+                conjugationTu = stemChangedVerb.replace("ir", "as");
+                conjugationEl = stemChangedVerb.replace("ir", "a");
+                conjugationNos = infinitive.replace("ir", "amos");
+                conjugationOs = infinitive.replace("ir", "áis");
+                conjugationEllos = stemChangedVerb.replace("ir", "an");
+            } else {
+                conjugationYo = infinitive.replace("ir", "a");
+                conjugationTu = infinitive.replace("ir", "as");
+                conjugationEl = infinitive.replace("ir", "a");
+                conjugationNos = infinitive.replace("ir", "amos");
+                conjugationOs = infinitive.replace("ir", "áis");
+                conjugationEllos = infinitive.replace("ir", "an");
+            }
+        }
+
+        setText();
     }
 
     // Sets and clears the text of these placeholder text views to the conjugation
@@ -483,7 +532,8 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         // verbTense is the position of the item selected in the spinner
         verbTense = mConjugationTypeSpinner.getSelectedItemPosition();
         /* 0 = present tense, 1 = preterite tense, 2 = imperfect tense, 3 = future tense,
-           4 = imperative tense, 5 = subjunctive tense
+           4 = affirmative imperative tense,  5 = negative imperative tense,
+           6 = present subjunctive tense, 7 = imperfect subjunctive tense
          */
     }
 
