@@ -127,6 +127,10 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
             } else if (verbTense == 6) {
                 if (hasStemChange) { stemChange(); }
                 conjugatePresentSubjunctive();
+            } else if (verbTense == 7) {
+                conjugateImperfectSubjunctive();
+            } else if (verbTense == 8) {
+                conjugateVerbConditional();
             }
         } else if (isEndingEr && !isIrregularVerb) {
             // checks verb tense and then calls respective method
@@ -149,6 +153,10 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
             } else if (verbTense == 6) {
                 if (hasStemChange) { stemChange(); }
                 conjugatePresentSubjunctive();
+            } else if (verbTense == 7) {
+                conjugateImperfectSubjunctive();
+            } else if (verbTense == 8) {
+                conjugateVerbConditional();
             }
         } else if (isEndingIr && !isIrregularVerb) {
             // checks verb tense and then calls respective method
@@ -171,6 +179,10 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
             } else if (verbTense == 6) {
                 if (hasStemChange) { stemChange(); }
                 conjugatePresentSubjunctive();
+            } else if (verbTense == 7) {
+                conjugateImperfectSubjunctive();
+            } else if (verbTense == 8) {
+                conjugateVerbConditional();
             }
         } else if (isIrregularVerb) {
             IrregularVerb.conjugate();
@@ -475,6 +487,21 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
                 conjugationEllos = infinitive.replace("ir", "an");
             }
         }
+
+        setText();
+    }
+
+    public void conjugateImperfectSubjunctive() {
+        // TODO This method
+    }
+
+    public static void conjugateVerbConditional() {
+        conjugationYo = infinitive + "ía";
+        conjugationTu = infinitive + "ías";
+        conjugationEl = infinitive + "ía";
+        conjugationNos = infinitive + "íamos";
+        conjugationOs = infinitive + "íais";
+        conjugationEllos = infinitive + "ían";
 
         setText();
     }

@@ -303,7 +303,6 @@ public class IrregularVerb {
                 MainFragment.setText();
             }
             // Imperfect tense irregular verbs
-            // TODO Fix this condition - doesn't work properly.
         } else if (MainFragment.verbTense == 2) {
             boolean notIrregularInImperfect = !MainFragment.infinitive.equals("ir")
                                                 && !MainFragment.infinitive.equals("ser")
@@ -333,12 +332,14 @@ public class IrregularVerb {
                 MainFragment.conjugationOs = "veíais";
                 MainFragment.conjugationEllos = "veían";
                 MainFragment.setText();
-            } else if (MainFragment.isEndingAr && notIrregularInImperfect) {
-                MainFragment.conjugateArVerbImperfect();
-            } else if (notIrregularInImperfect && MainFragment.isEndingEr) {
-                MainFragment.conjugateErIrVerbImperfect();
-            } else if (notIrregularInImperfect && MainFragment.isEndingIr) {
-                MainFragment.conjugateErIrVerbImperfect();
+            } else {
+                if (MainFragment.isEndingAr && notIrregularInImperfect) {
+                    MainFragment.conjugateArVerbImperfect();
+                } else if (notIrregularInImperfect && MainFragment.isEndingEr) {
+                    MainFragment.conjugateErIrVerbImperfect();
+                } else if (notIrregularInImperfect && MainFragment.isEndingIr) {
+                    MainFragment.conjugateErIrVerbImperfect();
+                }
             }
             // Future tense irregular verbs
         } else if (MainFragment.verbTense == 3) {
@@ -371,6 +372,8 @@ public class IrregularVerb {
                 MainFragment.conjugateVerbFuture();
             } else if (MainFragment.infinitive.equals("hacer")) {
                 MainFragment.infinitive = "har";
+                MainFragment.conjugateVerbFuture();
+            } else {
                 MainFragment.conjugateVerbFuture();
             } // Affirmative commands
         } else if (MainFragment.verbTense == 4) {
@@ -691,6 +694,45 @@ public class IrregularVerb {
                 MainFragment.conjugationOs = "tengáis";
                 MainFragment.conjugationEllos = "tengan";
                 MainFragment.setText();
+            }
+            // Imperfect subjunctive verb conjugations
+            // TODO Complete all irregular verb conjugations
+        } else if (MainFragment.verbTense == 7) {
+
+            // Conditional tense verb conjugations
+        } else if (MainFragment.verbTense == 8) {
+            if (MainFragment.infinitive.equals("haber")) {
+                MainFragment.infinitive = "habr";
+                MainFragment.conjugateVerbConditional();
+            } else if (MainFragment.infinitive.equals("poder")) {
+                MainFragment.infinitive = "podr";
+                MainFragment.conjugateVerbConditional();
+            } else if (MainFragment.infinitive.equals("querer")) {
+                MainFragment.infinitive = "querr";
+                MainFragment.conjugateVerbConditional();
+            } else if (MainFragment.infinitive.equals("saber")) {
+                MainFragment.infinitive = "sabr";
+                MainFragment.conjugateVerbConditional();
+            } else if (MainFragment.infinitive.equals("poner")) {
+                MainFragment.infinitive = "pondr";
+                MainFragment.conjugateVerbConditional();
+            } else if (MainFragment.infinitive.equals("salir")) {
+                MainFragment.infinitive = "saldr";
+                MainFragment.conjugateVerbConditional();
+            } else if (MainFragment.infinitive.equals("tener")) {
+                MainFragment.infinitive = "tendr";
+                MainFragment.conjugateVerbConditional();
+            } else if (MainFragment.infinitive.equals("venir")) {
+                MainFragment.infinitive = "vendr";
+                MainFragment.conjugateVerbConditional();
+            } else if (MainFragment.infinitive.equals("decir")) {
+                MainFragment.infinitive = "dir";
+                MainFragment.conjugateVerbConditional();
+            } else if (MainFragment.infinitive.equals("hacer")) {
+                MainFragment.infinitive = "har";
+                MainFragment.conjugateVerbConditional();
+            } else {
+                MainFragment.conjugateVerbConditional();
             }
         }
     }
