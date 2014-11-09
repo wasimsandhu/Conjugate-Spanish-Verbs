@@ -26,7 +26,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
     Button mConjugateButton;
 
     public static boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb, isIrregularYoVerb, hasStemChange;
-    boolean E2IE, O2UE, E2I;
+    boolean E2IE, O2UE, E2I, U2UE;
 
     public static int verbTense;
 
@@ -41,9 +41,10 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
             "recomendar", "sentarse", "querer"};
 
     String[] stemChangingVerbsUE = {"almorzar", "aprobar", "contar", "costar", "doler", "dormir", "encontrar",
-            "jugar", "llover", "morir", "poder", "probar", "recordar", "soñar", "volar"};
+            "llover", "morir", "poder", "probar", "recordar", "soñar", "volar"};
 
     String[] stemChangingVerbsI = {"conseguir", "corregir", "elegir", "repetir", "seguir", "servir", "vestirse"};
+
 
     public MainFragment() {
 
@@ -100,10 +101,12 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         E2IE = Arrays.asList(stemChangingVerbsIE).contains(infinitive);
         O2UE = Arrays.asList(stemChangingVerbsUE).contains(infinitive);
         E2I = Arrays.asList(stemChangingVerbsI).contains(infinitive);
+        U2UE = infinitive.equals("jugar");
 
         if (E2IE) { hasStemChange = true; }
         if (O2UE) { hasStemChange = true; }
         if (E2I) { hasStemChange = true; }
+        if (U2UE) { hasStemChange = true; }
 
         // Check to see what kind of verb it is before conjugating
         if (isEndingAr && !isIrregularVerb) {
@@ -549,8 +552,12 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
             StringBuilder sb = new StringBuilder(stemChangedVerb);
             sb = sb.replace(index, index + 1, "i");
             stemChangedVerb = sb.toString();
-        } else {
-
+        } else if (U2UE) {
+            // finds "u" and changes to stem "ue"
+            index = stemChangedVerb.indexOf("u");
+            StringBuilder sb = new StringBuilder(stemChangedVerb);
+            sb = sb.replace(index, index + 1, "ue");
+            stemChangedVerb = sb.toString();
         }
     }
 
