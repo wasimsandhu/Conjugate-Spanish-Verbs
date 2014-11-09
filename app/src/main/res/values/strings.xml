@@ -15,16 +15,15 @@
     <string name="ellos">Ellos/ellas/ustedes: </string>
 
     <string-array name="conjugation_types">
-        <item>Present Tense</item>
-        <item>Preterite Tense</item>
-        <item>Imperfect Tense</item>
-        <item>Future Tense</item>
-        <item>Affirmative Command</item>
-        <item>Negative Command</item>
-        <item>Present Subjunctive Tense</item>
-        <item>Imperfect Subjunctive Tense</item>
-        <item>Past Participle Tense</item>
-        <item>Gerund Form</item>
+        <item>Present Tense</item> <!-- Spinner position: 0 -->
+        <item>Preterite Tense</item> <!-- Spinner position: 1 -->
+        <item>Imperfect Tense</item> <!-- Spinner position: 2 -->
+        <item>Future Tense</item> <!-- Spinner position: 3 -->
+        <item>Affirmative Command</item> <!-- Spinner position: 4 -->
+        <item>Negative Command</item> <!-- Spinner position: 5 -->
+        <item>Present Subjunctive Tense</item> <!-- Spinner position: 6 -->
+        <item>Imperfect Subjunctive Tense</item> <!-- Spinner position: 7 -->
+        <item>Conditional Tense</item> <!-- Spinner position: 8 -->
     </string-array>
 
 </resources>
