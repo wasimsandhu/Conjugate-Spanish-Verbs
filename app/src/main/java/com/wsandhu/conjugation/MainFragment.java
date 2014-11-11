@@ -495,7 +495,43 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
     }
 
     public void conjugateImperfectSubjunctive() {
-        // TODO This method
+
+        if (isEndingAr) {
+            // first conjugates to preterite tense of ellos/ellas/ustedes form
+            infinitive = infinitive.replace("ar", "aron");
+
+            // then change to imperfect subjunctive endings
+            conjugationYo = infinitive.replace("ron", "ra");
+            conjugationTu = infinitive.replace("ron", "ras");
+            conjugationEl = infinitive.replace("ron", "ra");
+            conjugationNos = infinitive.replace("ron", "áramos");
+            conjugationOs = infinitive.replace("ron", "rais");
+            conjugationEllos = infinitive.replace("ron", "ran");
+        } else if (isEndingEr) {
+            // first conjugates to preterite tense of ellos/ellas/ustedes form
+            infinitive = infinitive.replace("er", "ieron");
+
+            // then change to imperfect subjunctive endings
+            conjugationYo = infinitive.replace("ron", "ra");
+            conjugationTu = infinitive.replace("ron", "ras");
+            conjugationEl = infinitive.replace("ron", "ra");
+            conjugationNos = infinitive.replace("ron", "éramos");
+            conjugationOs = infinitive.replace("ron", "rais");
+            conjugationEllos = infinitive.replace("ron", "ran");
+        } else if (isEndingIr) {
+            // first conjugates to preterite tense of ellos/ellas/ustedes form
+            infinitive = infinitive.replace("ir", "ieron");
+
+            // then change to imperfect subjunctive endings
+            conjugationYo = infinitive.replace("ron", "ra");
+            conjugationTu = infinitive.replace("ron", "ras");
+            conjugationEl = infinitive.replace("ron", "ra");
+            conjugationNos = infinitive.replace("ron", "éramos");
+            conjugationOs = infinitive.replace("ron", "rais");
+            conjugationEllos = infinitive.replace("ron", "ran");
+        }
+
+        setText();
     }
 
     public static void conjugateVerbConditional() {

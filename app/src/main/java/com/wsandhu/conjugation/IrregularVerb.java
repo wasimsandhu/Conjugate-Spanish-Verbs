@@ -698,7 +698,151 @@ public class IrregularVerb {
             // Imperfect subjunctive verb conjugations
             // TODO Complete all irregular verb conjugations
         } else if (MainFragment.verbTense == 7) {
-
+            if (MainFragment.infinitive.equals("ir")) {
+                MainFragment.conjugationYo = "fuera";
+                MainFragment.conjugationTu = "fueras";
+                MainFragment.conjugationEl = "fuera";
+                MainFragment.conjugationNos = "fuéramos";
+                MainFragment.conjugationOs = "fuerais";
+                MainFragment.conjugationEllos = "fueran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("ser")) {
+                MainFragment.conjugationYo = "fuera";
+                MainFragment.conjugationTu = "fueras";
+                MainFragment.conjugationEl = "fuera";
+                MainFragment.conjugationNos = "fuéramos";
+                MainFragment.conjugationOs = "fuerais";
+                MainFragment.conjugationEllos = "fueran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("estar")) {
+                MainFragment.conjugationYo = "estuviera";
+                MainFragment.conjugationTu = "estuvieras";
+                MainFragment.conjugationEl = "estuviera";
+                MainFragment.conjugationNos = "estuviéramos";
+                MainFragment.conjugationOs = "estuvierais";
+                MainFragment.conjugationEllos = "estuvieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("dar")) {
+                MainFragment.conjugationYo = "diera";
+                MainFragment.conjugationTu = "dieras";
+                MainFragment.conjugationEl = "diera";
+                MainFragment.conjugationNos = "diéramos";
+                MainFragment.conjugationOs = "dierais";
+                MainFragment.conjugationEllos = "dieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("saber")) {
+                MainFragment.conjugationYo = "supiera";
+                MainFragment.conjugationTu = "supieras";
+                MainFragment.conjugationEl = "supiera";
+                MainFragment.conjugationNos = "supiéramos";
+                MainFragment.conjugationOs = "supierais";
+                MainFragment.conjugationEllos = "supieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("conocer")) {
+                MainFragment.conjugationYo = "conociera";
+                MainFragment.conjugationTu = "conocieras";
+                MainFragment.conjugationEl = "conociera";
+                MainFragment.conjugationNos = "conociéramos";
+                MainFragment.conjugationOs = "conocierais";
+                MainFragment.conjugationEllos = "conocieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("hacer")) {
+                MainFragment.conjugationYo = "hiciera";
+                MainFragment.conjugationTu = "hicieras";
+                MainFragment.conjugationEl = "hiciera";
+                MainFragment.conjugationNos = "hiciéramos";
+                MainFragment.conjugationOs = "hicierais";
+                MainFragment.conjugationEllos = "hicieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("traer")) {
+                MainFragment.conjugationYo = "trajera";
+                MainFragment.conjugationTu = "trajeras";
+                MainFragment.conjugationEl = "trajera";
+                MainFragment.conjugationNos = "trajéramos";
+                MainFragment.conjugationOs = "trajerais";
+                MainFragment.conjugationEllos = "trajeran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("poner")) {
+                MainFragment.conjugationYo = "pusiera";
+                MainFragment.conjugationTu = "pusieras";
+                MainFragment.conjugationEl = "pusiera";
+                MainFragment.conjugationNos = "pusiéramos";
+                MainFragment.conjugationOs = "pusierais";
+                MainFragment.conjugationEllos = "pusieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("ver")) {
+                MainFragment.conjugationYo = "cupiera";
+                MainFragment.conjugationTu = "cupieras";
+                MainFragment.conjugationEl = "cupiera";
+                MainFragment.conjugationNos = "cupiéramos";
+                MainFragment.conjugationOs = "cupierais";
+                MainFragment.conjugationEllos = "cupieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("salir")) {
+                MainFragment.conjugationYo = "saliera";
+                MainFragment.conjugationTu = "salieras";
+                MainFragment.conjugationEl = "saliera";
+                MainFragment.conjugationNos = "saliéramos";
+                MainFragment.conjugationOs = "salierais";
+                MainFragment.conjugationEllos = "salieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("conducir")) {
+                MainFragment.conjugationYo = "condujera";
+                MainFragment.conjugationTu = "condujeras";
+                MainFragment.conjugationEl = "condujera";
+                MainFragment.conjugationNos = "condujéramos";
+                MainFragment.conjugationOs = "condujerais";
+                MainFragment.conjugationEllos = "condujeran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("haber")) {
+                MainFragment.conjugationYo = "hubiera";
+                MainFragment.conjugationTu = "hubieras";
+                MainFragment.conjugationEl = "hubiera";
+                MainFragment.conjugationNos = "hubiéramos";
+                MainFragment.conjugationOs = "hubierais";
+                MainFragment.conjugationEllos = "hubieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("poder")) {
+                MainFragment.conjugationYo = "pudiera";
+                MainFragment.conjugationTu = "pudieras";
+                MainFragment.conjugationEl = "pudiera";
+                MainFragment.conjugationNos = "pudiéramos";
+                MainFragment.conjugationOs = "pudierais";
+                MainFragment.conjugationEllos = "pudieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("querer")) {
+                MainFragment.conjugationYo = "quisiera";
+                MainFragment.conjugationTu = "quisieras";
+                MainFragment.conjugationEl = "quisiera";
+                MainFragment.conjugationNos = "quisiéramos";
+                MainFragment.conjugationOs = "quisierais";
+                MainFragment.conjugationEllos = "quisieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("tener")) {
+                MainFragment.conjugationYo = "tuviera";
+                MainFragment.conjugationTu = "tuvieras";
+                MainFragment.conjugationEl = "tuviera";
+                MainFragment.conjugationNos = "tuviéramos";
+                MainFragment.conjugationOs = "tuvierais";
+                MainFragment.conjugationEllos = "tuvieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("venir")) {
+                MainFragment.conjugationYo = "viniera";
+                MainFragment.conjugationTu = "vinieras";
+                MainFragment.conjugationEl = "viniera";
+                MainFragment.conjugationNos = "viniéramos";
+                MainFragment.conjugationOs = "vinierais";
+                MainFragment.conjugationEllos = "vinieran";
+                MainFragment.setText();
+            } else if (MainFragment.infinitive.equals("decir")) {
+                MainFragment.conjugationYo = "dijera";
+                MainFragment.conjugationTu = "dijeras";
+                MainFragment.conjugationEl = "dijera";
+                MainFragment.conjugationNos = "dijéramos";
+                MainFragment.conjugationOs = "dijerais";
+                MainFragment.conjugationEllos = "dijeran";
+                MainFragment.setText();
+            }
             // Conditional tense verb conjugations
         } else if (MainFragment.verbTense == 8) {
             if (MainFragment.infinitive.equals("haber")) {
