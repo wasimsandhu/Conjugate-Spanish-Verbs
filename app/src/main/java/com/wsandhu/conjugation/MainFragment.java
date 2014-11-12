@@ -25,7 +25,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
     EditText mMainTextField;
     Button mConjugateButton;
 
-    public static boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb, isIrregularYoVerb, hasStemChange;
+    public static boolean isEndingAr, isEndingEr, isEndingIr, isIrregularVerb, isIrregularYoVerb, hasStemChange, hasSpellingChange;
     boolean E2IE, O2UE, E2I, U2UE;
 
     public static int verbTense;
@@ -96,6 +96,11 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         isEndingIr = infinitive.endsWith("ir");
         isIrregularVerb = Arrays.asList(irregularVerbs).contains(infinitive);
         isIrregularYoVerb = Arrays.asList(irregularYoVerbs).contains(infinitive);
+
+        // boolean for checking for -car, -gar, -zar spelling changes for some tenses
+        if (infinitive.endsWith("car")) { hasSpellingChange = true; }
+        if (infinitive.endsWith("gar")) { hasSpellingChange = true; }
+        if (infinitive.endsWith("zar")) { hasSpellingChange = true; }
 
         // Booleans for checking stem change before conjugation
         E2IE = Arrays.asList(stemChangingVerbsIE).contains(infinitive);
@@ -270,7 +275,17 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
     /* METHODS FOR PRETERITE TENSE CONJUGATIONS */
     public void conjugateArVerbPreterite() {
 
-        conjugationYo = infinitive.replace("ar", "é");
+        // Spelling change of car/gar/zar verbs to maintain pronunciation
+        if (hasSpellingChange) {
+            if (infinitive.endsWith("car")) {
+                conjugationYo = infinitive.replace("car", "qué");
+            } else if (infinitive.endsWith("gar")) {
+                conjugationYo = infinitive.replace("gar", "gué");
+            } else if (infinitive.endsWith("zar")) {
+                conjugationYo = infinitive.replace("zar", "cé");
+            }
+        } else { conjugationYo = infinitive.replace("ar", "é"); }
+
         conjugationTu = infinitive.replace("ar", "aste");
         conjugationEl = infinitive.replace("ar", "ó");
         conjugationNos = infinitive.replace("ar", "amos");
@@ -282,19 +297,23 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
 
     public void conjugateErIrVerbPreterite() {
 
-        conjugationYo = infinitive.replace("er", "í");
-        conjugationTu = infinitive.replace("er", "iste");
-        conjugationEl = infinitive.replace("er", "ió");
-        conjugationNos = infinitive.replace("er", "imos");
-        conjugationOs = infinitive.replace("er", "isteis");
-        conjugationEllos = infinitive.replace("er", "ieron");
+        if (isEndingEr) {
+            conjugationYo = infinitive.replace("er", "í");
+            conjugationTu = infinitive.replace("er", "iste");
+            conjugationEl = infinitive.replace("er", "ió");
+            conjugationNos = infinitive.replace("er", "imos");
+            conjugationOs = infinitive.replace("er", "isteis");
+            conjugationEllos = infinitive.replace("er", "ieron");
+        }
 
-        conjugationYo = infinitive.replace("ir", "í");
-        conjugationTu = infinitive.replace("ir", "iste");
-        conjugationEl = infinitive.replace("ir", "ió");
-        conjugationNos = infinitive.replace("ir", "imos");
-        conjugationOs = infinitive.replace("ir", "isteis");
-        conjugationEllos = infinitive.replace("ir", "ieron");
+        if (isEndingIr) {
+            conjugationYo = infinitive.replace("ir", "í");
+            conjugationTu = infinitive.replace("ir", "iste");
+            conjugationEl = infinitive.replace("ir", "ió");
+            conjugationNos = infinitive.replace("ir", "imos");
+            conjugationOs = infinitive.replace("ir", "isteis");
+            conjugationEllos = infinitive.replace("ir", "ieron");
+        }
 
         setText();
     }
@@ -312,19 +331,24 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
     }
 
     public static void conjugateErIrVerbImperfect() {
-        conjugationYo = infinitive.replace("er", "ía");
-        conjugationTu = infinitive.replace("er", "ías");
-        conjugationEl = infinitive.replace("er", "ía");
-        conjugationNos = infinitive.replace("er", "íamos");
-        conjugationOs = infinitive.replace("er", "íais");
-        conjugationEllos = infinitive.replace("er", "ían");
 
-        conjugationYo = infinitive.replace("ir", "ía");
-        conjugationTu = infinitive.replace("ir", "ías");
-        conjugationEl = infinitive.replace("ir", "ía");
-        conjugationNos = infinitive.replace("ir", "íamos");
-        conjugationOs = infinitive.replace("ir", "íais");
-        conjugationEllos = infinitive.replace("ir", "ían");
+        if (isEndingEr) {
+            conjugationYo = infinitive.replace("er", "ía");
+            conjugationTu = infinitive.replace("er", "ías");
+            conjugationEl = infinitive.replace("er", "ía");
+            conjugationNos = infinitive.replace("er", "íamos");
+            conjugationOs = infinitive.replace("er", "íais");
+            conjugationEllos = infinitive.replace("er", "ían");
+        }
+
+        if (isEndingIr) {
+            conjugationYo = infinitive.replace("ir", "ía");
+            conjugationTu = infinitive.replace("ir", "ías");
+            conjugationEl = infinitive.replace("ir", "ía");
+            conjugationNos = infinitive.replace("ir", "íamos");
+            conjugationOs = infinitive.replace("ir", "íais");
+            conjugationEllos = infinitive.replace("ir", "ían");
+        }
 
         setText();
     }

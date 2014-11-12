@@ -304,10 +304,6 @@ public class IrregularVerb {
             }
             // Imperfect tense irregular verbs
         } else if (MainFragment.verbTense == 2) {
-            boolean notIrregularInImperfect = !MainFragment.infinitive.equals("ir")
-                                                && !MainFragment.infinitive.equals("ser")
-                                                && !MainFragment.infinitive.equals("ver");
-
             if (MainFragment.infinitive.equals("ir")) {
                 MainFragment.conjugationYo = "iba";
                 MainFragment.conjugationTu = "ibas";
@@ -333,11 +329,9 @@ public class IrregularVerb {
                 MainFragment.conjugationEllos = "veían";
                 MainFragment.setText();
             } else {
-                if (MainFragment.isEndingAr && notIrregularInImperfect) {
+                if (MainFragment.isEndingAr) {
                     MainFragment.conjugateArVerbImperfect();
-                } else if (notIrregularInImperfect && MainFragment.isEndingEr) {
-                    MainFragment.conjugateErIrVerbImperfect();
-                } else if (notIrregularInImperfect && MainFragment.isEndingIr) {
+                } else {
                     MainFragment.conjugateErIrVerbImperfect();
                 }
             }
