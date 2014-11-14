@@ -1,9 +1,11 @@
 package com.wsandhu.conjugation;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -75,6 +77,20 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         // Grabs input from text field and places it in String infinitive
         mMainTextField = (EditText) rootView.findViewById(R.id.mainTextField);
 
+        mMainTextField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    conjugate();
+                    handled = true;
+                }
+
+                return handled;
+            }
+        });
+
         /* The conjugate button code */
         mConjugateButton = (Button) rootView.findViewById(R.id.conjugateButton);
         mConjugateButton.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +99,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
                 conjugate();
             }
         });
+
         return rootView;
     }
 
