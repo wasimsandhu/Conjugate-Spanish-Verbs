@@ -9,7 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 19
         versionCode 1
-        versionName "1.0"
+        versionName "0.5"
     }
     buildTypes {
         release {
@@ -22,4 +22,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:appcompat-v7:21.0.+"
+    compile 'de.cketti.library.changelog:ckchangelog:1.2.1'
+    compile 'com.nispok:snackbar:2.0.1'
 }

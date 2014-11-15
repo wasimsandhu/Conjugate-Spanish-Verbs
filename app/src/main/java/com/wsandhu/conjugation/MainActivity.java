@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import de.cketti.library.changelog.ChangeLog;
+
 public class MainActivity extends ActionBarActivity {
 
     @Override
@@ -29,6 +31,11 @@ public class MainActivity extends ActionBarActivity {
                 }
             });
         }
+
+        ChangeLog cl = new ChangeLog(this);
+        if (cl.isFirstRun()) {
+            cl.getLogDialog().show();
+        }
     }
 
     @Override
@@ -45,10 +52,14 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+
             return true;
         } else if (id == R.id.action_bugreport) {
             sendBugReport();
+        } else if (id ==R.id.changelog) {
+            new ChangeLog(this).getFullLogDialog().show();
         }
+
         return super.onOptionsItemSelected(item);
     }
 

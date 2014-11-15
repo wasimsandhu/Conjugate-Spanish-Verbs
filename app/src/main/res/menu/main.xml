@@ -2,6 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:conjugation="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
+    <item android:id="@+id/changelog"
+        android:title="What's New"
+        android:orderInCategory="100"
+        conjugation:showAsAction="never" />
     <item android:id="@+id/action_bugreport"
         android:title="Report A Bug"
         android:orderInCategory="200"

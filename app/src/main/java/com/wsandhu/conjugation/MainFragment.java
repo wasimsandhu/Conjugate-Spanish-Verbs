@@ -12,7 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.nispok.snackbar.Snackbar;
 
 import java.util.Arrays;
 
@@ -212,8 +213,9 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         } else if (isIrregularVerb) {
             IrregularVerb.conjugate();
         } else {
-            Toast toast = Toast.makeText(getActivity(), "Cannot conjugate verb", Toast.LENGTH_SHORT);
-            toast.show();
+            Snackbar.with(getActivity()) // context
+                    .text("¡Lo siento! Could not conjugate that verb.") // text to display
+                    .show(getActivity()); // activity where it is displayed
         }
     }
 

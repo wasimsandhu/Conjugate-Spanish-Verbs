@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog>
+    <release version="0.5" versioncode="05" >
+        <change>Initial beta release!</change>
+        <change>Added a helpful changelog!</change>
+    </release>
+</changelog>
