@@ -388,14 +388,20 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
     /* METHODS FOR IMPERATIVE TENSE CONJUGATION */
     public void conjugateVerbAffirmativeCommand() {
 
+        // Spelling change for pronunciation
+        if (infinitive.endsWith("ger")) { hasSpellingChange = true; }
+        if (infinitive.endsWith("guir")) { hasSpellingChange = true; }
+
         if (isEndingAr) {
             if (hasStemChange) {
                 conjugationTu = stemChangedVerb.replace("ar", "a");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = stemChangedVerb.replace("ar", "e");
                 conjugationNos = infinitive.replace("ar", "emos");
                 conjugationEllos = stemChangedVerb.replace("ar", "en");
             } else {
                 conjugationTu = infinitive.replace("ar", "a");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = infinitive.replace("ar", "e");
                 conjugationNos = infinitive.replace("ar", "emos");
                 conjugationEllos = infinitive.replace("ar", "en");
@@ -403,11 +409,13 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         } else if (isEndingEr) {
             if (hasStemChange) {
                 conjugationTu = stemChangedVerb.replace("er", "e");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = stemChangedVerb.replace("er", "a");
                 conjugationNos = infinitive.replace("er", "amos");
                 conjugationEllos = stemChangedVerb.replace("o", "an");
             } else {
                 conjugationTu = infinitive.replace("er", "e");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = infinitive.replace("er", "a");
                 conjugationNos = infinitive.replace("er", "amos");
                 conjugationEllos = infinitive.replace("er", "an");
@@ -415,11 +423,13 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         } else if (isEndingIr) {
             if (hasStemChange) {
                 conjugationTu = stemChangedVerb.replace("ir", "e");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = stemChangedVerb.replace("ir", "a");
                 conjugationNos = infinitive.replace("ir", "amos");
                 conjugationEllos = stemChangedVerb.replace("ir", "an");
             } else {
                 conjugationTu = infinitive.replace("ir", "e");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = infinitive.replace("ir", "a");
                 conjugationNos = infinitive.replace("ir", "amos");
                 conjugationEllos = infinitive.replace("ir", "an");
@@ -435,15 +445,21 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
 
     public void conjugateVerbNegativeCommand() {
 
+        // Spelling change for pronunciation
+        if (infinitive.endsWith("ger")) { hasSpellingChange = true; }
+        if (infinitive.endsWith("guir")) { hasSpellingChange = true; }
+
         // Tú commands are just present tense el/ella/usted
         if (isEndingAr) {
             if (hasStemChange) {
                 conjugationTu = "no " + stemChangedVerb.replace("ar", "es");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = "no " + stemChangedVerb.replace("ar", "e");
                 conjugationNos = "no " + infinitive.replace("ar", "emos");
                 conjugationEllos = "no " + stemChangedVerb.replace("ar", "en");
             } else {
                 conjugationTu = "no " + infinitive.replace("ar", "es");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = "no " + infinitive.replace("ar", "e");
                 conjugationNos = "no " + infinitive.replace("ar", "emos");
                 conjugationEllos = "no " + infinitive.replace("ar", "en");
@@ -451,11 +467,13 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         } else if (isEndingEr) {
             if (hasStemChange) {
                 conjugationTu = "no " + stemChangedVerb.replace("er", "as");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = "no " + stemChangedVerb.replace("er", "a");
                 conjugationNos = "no " + infinitive.replace("er", "amos");
                 conjugationEllos = "no " + stemChangedVerb.replace("er", "an");
             } else {
                 conjugationTu = "no " + infinitive.replace("er", "as");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = "no " + infinitive.replace("er", "a");
                 conjugationNos = "no " + infinitive.replace("er", "amos");
                 conjugationEllos = "no " + infinitive.replace("er", "an");
@@ -463,11 +481,13 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
         } else if (isEndingIr) {
             if (hasStemChange) {
                 conjugationTu = "no " + stemChangedVerb.replace("ir", "as");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = "no " + stemChangedVerb.replace("ir", "a");
                 conjugationNos = "no " + infinitive.replace("ir", "amos");
                 conjugationEllos = "no " + stemChangedVerb.replace("ir", "an");
             } else {
                 conjugationTu = "no " + infinitive.replace("ir", "as");
+                if (hasSpellingChange) { spellingChange(); }
                 conjugationEl = "no " + infinitive.replace("ir", "a");
                 conjugationNos = "no " + infinitive.replace("ir", "amos");
                 conjugationEllos = "no " + infinitive.replace("ir", "an");
@@ -483,59 +503,67 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
 
     public void conjugatePresentSubjunctive() {
 
-        // TODO spelling change of -car, -gar, -zar verbs
+        // Spelling change of -car, -gar, -zar verbs
+        if (infinitive.endsWith("ger")) { hasSpellingChange = true; }
+        if (infinitive.endsWith("guir")) { hasSpellingChange = true; }
+        if (hasSpellingChange) { spellingChange(); }
+
         if (isEndingAr) {
-            if (hasStemChange) {
-                conjugationYo = stemChangedVerb.replace("ar", "e");
-                conjugationTu = stemChangedVerb.replace("ar", "es");
-                conjugationEl = stemChangedVerb.replace("ar", "e");
-                conjugationNos = infinitive.replace("ar", "emos");
-                conjugationOs = infinitive.replace("ar", "éis");
-                conjugationEllos = stemChangedVerb.replace("ar", "en");
-            } else {
-                conjugationYo = infinitive.replace("ar", "e");
-                conjugationTu = infinitive.replace("ar", "es");
-                conjugationEl = infinitive.replace("ar", "e");
-                conjugationNos = infinitive.replace("ar", "emos");
-                conjugationOs = infinitive.replace("ar", "éis");
-                conjugationEllos = infinitive.replace("ar", "en");
+
+                if (hasStemChange) {
+                    conjugationYo = stemChangedVerb.replace("ar", "e");
+                    conjugationTu = stemChangedVerb.replace("ar", "es");
+                    conjugationEl = stemChangedVerb.replace("ar", "e");
+                    conjugationNos = infinitive.replace("ar", "emos");
+                    conjugationOs = infinitive.replace("ar", "éis");
+                    conjugationEllos = stemChangedVerb.replace("ar", "en");
+                } else {
+                    conjugationYo = infinitive.replace("ar", "e");
+                    conjugationTu = infinitive.replace("ar", "es");
+                    conjugationEl = infinitive.replace("ar", "e");
+                    conjugationNos = infinitive.replace("ar", "emos");
+                    conjugationOs = infinitive.replace("ar", "éis");
+                    conjugationEllos = infinitive.replace("ar", "en");
+                }
+            } else if (isEndingEr) {
+
+                if (hasStemChange) {
+                    conjugationYo = stemChangedVerb.replace("er", "a");
+                    conjugationTu = stemChangedVerb.replace("er", "as");
+                    conjugationEl = stemChangedVerb.replace("er", "a");
+                    conjugationNos = infinitive.replace("er", "amos");
+                    conjugationOs = infinitive.replace("er", "áis");
+                    conjugationEllos = stemChangedVerb.replace("er", "an");
+                } else {
+                    conjugationYo = infinitive.replace("er", "a");
+                    conjugationTu = infinitive.replace("er", "as");
+                    conjugationEl = infinitive.replace("er", "a");
+                    conjugationNos = infinitive.replace("er", "amos");
+                    conjugationOs = infinitive.replace("er", "áis");
+                    conjugationEllos = infinitive.replace("er", "an");
+                }
+            } else if (isEndingIr) {
+
+                if (hasStemChange) {
+                    conjugationYo = stemChangedVerb.replace("ir", "a");
+                    conjugationTu = stemChangedVerb.replace("ir", "as");
+                    conjugationEl = stemChangedVerb.replace("ir", "a");
+                    conjugationNos = infinitive.replace("ir", "amos");
+                    conjugationOs = infinitive.replace("ir", "áis");
+                    conjugationEllos = stemChangedVerb.replace("ir", "an");
+                } else {
+                    conjugationYo = infinitive.replace("ir", "a");
+                    conjugationTu = infinitive.replace("ir", "as");
+                    conjugationEl = infinitive.replace("ir", "a");
+                    conjugationNos = infinitive.replace("ir", "amos");
+                    conjugationOs = infinitive.replace("ir", "áis");
+                    conjugationEllos = infinitive.replace("ir", "an");
+                }
             }
-        } else if (isEndingEr) {
-            if (hasStemChange) {
-                conjugationYo = stemChangedVerb.replace("er", "a");
-                conjugationTu = stemChangedVerb.replace("er", "as");
-                conjugationEl = stemChangedVerb.replace("er", "a");
-                conjugationNos = infinitive.replace("er", "amos");
-                conjugationOs = infinitive.replace("er", "áis");
-                conjugationEllos = stemChangedVerb.replace("o", "an");
-            } else {
-                conjugationYo = infinitive.replace("er", "a");
-                conjugationTu = infinitive.replace("er", "as");
-                conjugationEl = infinitive.replace("er", "a");
-                conjugationNos = infinitive.replace("er", "amos");
-                conjugationOs = infinitive.replace("er", "áis");
-                conjugationEllos = infinitive.replace("er", "an");
-            }
-        } else if (isEndingIr) {
-            if (hasStemChange) {
-                conjugationYo = stemChangedVerb.replace("ir", "a");
-                conjugationTu = stemChangedVerb.replace("ir", "as");
-                conjugationEl = stemChangedVerb.replace("ir", "a");
-                conjugationNos = infinitive.replace("ir", "amos");
-                conjugationOs = infinitive.replace("ir", "áis");
-                conjugationEllos = stemChangedVerb.replace("ir", "an");
-            } else {
-                conjugationYo = infinitive.replace("ir", "a");
-                conjugationTu = infinitive.replace("ir", "as");
-                conjugationEl = infinitive.replace("ir", "a");
-                conjugationNos = infinitive.replace("ir", "amos");
-                conjugationOs = infinitive.replace("ir", "áis");
-                conjugationEllos = infinitive.replace("ir", "an");
-            }
+
+            setText();
         }
 
-        setText();
-    }
 
     public void conjugateImperfectSubjunctive() {
 
@@ -637,6 +665,33 @@ public class MainFragment extends android.support.v4.app.Fragment implements Ada
             StringBuilder sb = new StringBuilder(stemChangedVerb);
             sb = sb.replace(index, index + 1, "ue");
             stemChangedVerb = sb.toString();
+        }
+    }
+
+    // Spelling change for pronunciation in imperative, subjunctive form
+    private void spellingChange() {
+
+        if (isEndingAr) {
+            if (infinitive.endsWith("car")) {
+                infinitive = infinitive.replace("car", "quar");
+                stemChangedVerb = infinitive.replace("car", "quar");
+            } else if (infinitive.endsWith("gar")) {
+                infinitive = infinitive.replace("gar", "guar");
+                stemChangedVerb = infinitive.replace("gar", "guar");
+            } else if (infinitive.endsWith("zar")) {
+                infinitive = infinitive.replace("zar", "car");
+                stemChangedVerb = infinitive.replace("zar", "car");
+            }
+        } else if (isEndingEr) {
+            if (infinitive.endsWith("ger")) {
+                infinitive = infinitive.replace("ger", "jer");
+                stemChangedVerb = infinitive.replace("ger", "jer");
+            }
+        } else if (isEndingIr) {
+            if (infinitive.endsWith("guir")) {
+                infinitive = infinitive.replace("guir", "gir");
+                stemChangedVerb = infinitive.replace("guir", "gir");
+            }
         }
     }
 
