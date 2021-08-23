@@ -2,16 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:conjugation="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
-    <item android:id="@+id/changelog"
-        android:title="What's New"
-        android:orderInCategory="100"
-        conjugation:showAsAction="never" />
     <item android:id="@+id/action_bugreport"
-        android:title="Report A Bug"
+        android:title="Bug Report"
         android:orderInCategory="200"
         conjugation:showAsAction="never" />
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    <item android:id="@+id/remove_ads"
+        android:title="Remove Ads"
         android:orderInCategory="300"
+        conjugation:showAsAction="never" />
+    <item android:id="@+id/thanks"
+        android:title="Thank You"
+        android:orderInCategory="500"
         conjugation:showAsAction="never" />
 </menu>

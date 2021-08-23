@@ -1,0 +1,185 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity$PlaceholderFragment">
+
+    <AutoCompleteTextView
+        android:id="@+id/perfTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:inputType="textNoSuggestions"
+        android:imeOptions="actionGo"
+        android:hint="Write the infinitive here!" />
+
+    <TextView
+        android:id="@+id/perfYoLabelTextView"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yo: "
+        android:textSize="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/perfTextField" />
+
+    <TextView
+        android:id="@+id/perfYoTextView"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfTextField"
+        android:layout_toRightOf="@+id/perfYoLabelTextView"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfTuLabelTextView"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tú: "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfYoLabelTextView"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfTuTextView"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfYoLabelTextView"
+        android:layout_toRightOf="@+id/perfTuLabelTextView"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfElLabelTextView"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Él/ella/usted: "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfTuLabelTextView"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfElTextView"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfTuLabelTextView"
+        android:layout_toRightOf="@+id/perfElLabelTextView"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfNosLabelTextView"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nosotros: "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfElLabelTextView"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfNosTextView"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfElLabelTextView"
+        android:layout_toRightOf="@+id/perfNosLabelTextView"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfOsLabelTextView"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vosotros: "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfNosLabelTextView"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfOsTextView"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfNosLabelTextView"
+        android:layout_toRightOf="@+id/perfOsLabelTextView"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfEllosLabelTextView"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ellos/ellas/ustedes: "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfOsLabelTextView"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:id="@+id/perfEllosTextView"
+        android:textColor="#000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textSize="20dp"
+        android:layout_below="@+id/perfOsLabelTextView"
+        android:layout_toRightOf="@+id/perfEllosLabelTextView"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="15dp"/>
+
+    <Spinner
+        android:id="@+id/perfConjugationTypeSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/perfEllosLabelTextView" />
+
+    <!-- <info.hoang8f.widget.FButton
+        android:id="@+id/perfConjugateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="44dp"
+        android:minWidth="112dp"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:text="CONJUGATE"
+        android:textColor="#FFF"
+        fbutton:buttonColor="#33B5E5"
+        android:layout_marginBottom="25dp"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="2dp"
+        fbutton:cornerRadius="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" /> -->
+
+</RelativeLayout>
